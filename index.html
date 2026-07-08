@@ -66,7 +66,9 @@
   .wird-btn:hover { transform:scale(1.08) !important; box-shadow:0 6px 28px rgba(203,162,90,0.28) !important; }
   .wird-close:hover { color:#f4f1ea !important; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes zoomOut { from{opacity:0;transform:scale(1.18)} to{opacity:1;transform:scale(1)} }
+  @keyframes zoomOut { from{opacity:0;transform:scale(1.18)} to{opacity:1;transform:scale(1)} } 
+  @keyframes aiGlow { 0%,100%{opacity:.6; transform:translate(-50%,-50%) scale(1)} 50%{opacity:1; transform:translate(-50%,-50%) scale(1.15)} }
+  @keyframes aiPulse { 0%,100%{box-shadow:0 0 0 0 rgba(203,162,90,0.35)} 50%{box-shadow:0 0 0 10px rgba(203,162,90,0)} }
   .svc-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important; }
   .svc-card:hover { transform: translateY(-5px) !important; border-color: rgba(203,162,90,0.55) !important; box-shadow: 0 0 0 1px rgba(203,162,90,0.45), 0 18px 50px rgba(0,0,0,0.55), 0 0 28px rgba(203,162,90,0.1) !important; }
   .work-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important; }
@@ -353,7 +355,18 @@
       <div id="rwError" style="color:#c85b4a; font-size:.8rem; display:none; margin-top:8px;">تعذّر إرسال تقييمك، حاول لاحقًا.</div>
     </div>
   </section>
-
+<!-- AI ANALYSIS - COMING SOON -->
+  <section id="ai-analysis" data-screen-label="AI Analysis" style="position:relative; z-index:2; padding:clamp(48px,7vh,80px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06); text-align:center; overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border-radius:50%; background:radial-gradient(circle,rgba(203,162,90,0.10) 0%,transparent 70%); pointer-events:none; animation:aiGlow 3.2s ease-in-out infinite;"></div>
+    <div style="max-width:520px; margin:0 auto; position:relative; z-index:1;">
+      <p style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:13px; letter-spacing:0.16em; margin:0 0 14px;">✦ — قريباً</p>
+      <div style="width:64px; height:64px; margin:0 auto 22px; border-radius:50%; border:1px solid rgba(203,162,90,0.4); display:flex; align-items:center; justify-content:center; animation:aiPulse 2.4s ease-in-out infinite;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M12 2a4 4 0 0 0-4 4v1.2A4 4 0 0 0 6 11v2a4 4 0 0 0 2 3.46V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-1.54A4 4 0 0 0 18 13v-2a4 4 0 0 0-2-3.8V6a4 4 0 0 0-4-4Z"/><path d="M9 10h.01M15 10h.01M9.5 15h5"/></svg>
+      </div>
+      <h2 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; font-size:clamp(22px,3.2vw,32px); color:#f4f1ea;">تحليل بالذكاء الاصطناعي</h2>
+      <p style="margin:0; color:#a89c8a; font-size:.9rem; line-height:1.8;">قريبًا رح تقدر تحصل على تحليل تكتيكي لأي مباراة أو لاعب بضغطة زر، مدعوم بالذكاء الاصطناعي — تابعوني عشان توصلكم أول ما تنطلق الميزة.</p>
+    </div>
+  </section>
   <!-- CONTACT -->
   <section id="contact" data-screen-label="Contact" style="position:relative; z-index:2; padding:clamp(80px,13vh,150px) clamp(20px,5vw,72px); background:linear-gradient(160deg,#0c0b09 60%,#16120a); border-top:1px solid rgba(203,162,90,0.22); scroll-margin-top:70px; overflow:hidden;">
     <div aria-hidden="true" style="position:absolute; top:-120px; left:-80px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(203,162,90,0.07) 0%,transparent 70%); pointer-events:none;"></div>
