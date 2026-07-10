@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة العميل | أحمد شوقي</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#100f0d; color:#f4f1ea; font-family:'Tajawal',sans-serif; min-height:100vh; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:1px solid rgba(203,162,90,0.18); }
+  .topbar .brand { display:flex; align-items:center; gap:10px; font-weight:800; }
+  .topbar .brand img { width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.4); }
+  .logout-btn { background:transparent; border:1px solid rgba(203,162,90,0.35); color:#cba35a; padding:8px 16px; border-radius:5px; cursor:pointer; font-family:'Tajawal',sans-serif; font-size:13px; }
+  .logout-btn:hover { background:rgba(203,162,90,0.08); }
+  .container { max-width:760px; margin:0 auto; padding:36px 20px 80px; }
+  .welcome { font-size:22px; font-weight:800; margin:0 0 4px; }
+  .welcome-sub { color:#8a857c; font-size:13.5px; margin:0 0 30px; }
+  .vip-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(203,162,90,0.12); color:#cba35a; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.08em; padding:4px 11px; border-radius:12px; border:1px solid rgba(203,162,90,0.35); margin-bottom:24px; }
+  .card { background:#151210; border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:24px; margin-bottom:20px; }
+  .card h2 { font-size:15px; margin:0 0 16px; color:#e8caa0; }
+  .status-track { display:flex; gap:6px; }
+  .status-step { flex:1; text-align:center; }
+  .status-step .dot { width:14px; height:14px; border-radius:50%; background:#3a342c; margin:0 auto 8px; }
+  .status-step.done .dot { background:#cba35a; }
+  .status-step.current .dot { background:#cba35a; box-shadow:0 0 0 4px rgba(203,162,90,0.2); }
+  .status-step span { font-size:11.5px; color:#8a857c; }
+  .status-step.done span, .status-step.current span { color:#f4f1ea; }
+  .locked { text-align:center; padding:30px 20px; color:#6f6a61; }
+  .locked .lock-icon { font-size:26px; margin-bottom:10px; }
+  .locked p { font-size:13.5px; margin:0; }
+  .exclusive-item { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .exclusive-item:last-child { border-bottom:none; }
+  .exclusive-item .tag { font-family:'IBM Plex Mono',monospace; font-size:10px; color:rgba(203,162,90,0.7); letter-spacing:.06em; }
+  .exclusive-item p { margin:6px 0 0; font-size:14px; line-height:1.7; color:#d8d3c8; }
+  .price-box { display:flex; align-items:center; justify-content:space-between; background:#0c0b09; border:1px solid rgba(203,162,90,0.25); border-radius:6px; padding:16px 20px; }
+  .price-box .label { font-size:13px; color:#8a857c; }
+  .price-box .value { font-size:20px; font-weight:800; color:#cba35a; }
+  .loading { text-align:center; padding:80px 20px; color:#6f6a61; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand"><img src="assets/logo.jpg" alt="أحمد شوقي"><span>أحمد شوقي</span></div>
+  <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+</div>
+
+<div class="container" id="app">
+  <div class="loading">جارٍ التحميل...</div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://ztuflxgrpibcuvpvgwjf.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0dWZseGdycGliY3V2cHZnd2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2OTA0MjcsImV4cCI6MjA5OTI2NjQyN30.ThkQEYPrhhi0nz81iw-xO_A7f-l4F7QPjYXg8iqwRfc';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const STEPS = [
+    { key: 'new', label: 'تم الاستلام' },
+    { key: 'writing', label: 'كتابة السيناريو' },
+    { key: 'editing', label: 'قيد المونتاج' },
+    { key: 'review', label: 'مراجعة' },
+    { key: 'delivered', label: 'تسليم' },
+  ];
+
+  const app = document.getElementById('app');
+
+  function renderStatusTrack(currentKey) {
+    const idx = Math.max(0, STEPS.findIndex(s => s.key === currentKey));
+    return `<div class="status-track">${STEPS.map((s, i) => `
+      <div class="status-step ${i < idx ? 'done' : ''} ${i === idx ? 'current' : ''}">
+        <div class="dot"></div><span>${s.label}</span>
+      </div>`).join('')}</div>`;
+  }
+
+  function render(profile, email) {
+    const isVip = !!profile.is_vip;
+    const status = profile.project_status || 'new';
+
+    app.innerHTML = `
+      <h1 class="welcome">أهلاً، ${email}</h1>
+      <p class="welcome-sub">هاي لوحة متابعة مشروعك الخاصة</p>
+      ${isVip ? '<div class="vip-badge">★ عميل VIP</div>' : ''}
+
+      <div class="card">
+        <h2>حالة مشروعك</h2>
+        ${renderStatusTrack(status)}
+      </div>
+
+      <div class="card">
+        <h2>محتوى حصري</h2>
+        ${isVip ? `
+          <div class="exclusive-item">
+            <span class="tag">خلف الكواليس</span>
+            <p>${profile.exclusive_notes || 'قريباً رح نضيف هون مقاطع ولقطات من خلف كواليس مشاريعك.'}</p>
+          </div>
+        ` : `
+          <div class="locked">
+            <div class="lock-icon">🔒</div>
+            <p>هاد المحتوى متاح بس لعملاء VIP</p>
+          </div>
+        `}
+      </div>
+
+      <div class="card">
+        <h2>الأسعار الخاصة فيك</h2>
+        ${isVip && profile.special_price ? `
+          <div class="price-box">
+            <span class="label">سعرك الخاص</span>
+            <span class="value">${profile.special_price}</span>
+          </div>
+        ` : `
+          <div class="locked">
+            <div class="lock-icon">🔒</div>
+            <p>الأسعار المميزة متاحة لعملاء VIP بس</p>
+          </div>
+        `}
+      </div>
+    `;
+  }
+
+  async function init() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) { window.location.href = 'login.html'; return; }
+
+    const { data: profile, error } = await sb
+      .from('profiles')
+      .select('*')
+      .eq('id', session.user.id)
+      .single();
+
+    if (error || !profile) {
+      app.innerHTML = '<div class="loading">تعذّر تحميل بياناتك، حاول تحديث الصفحة.</div>';
+      return;
+    }
+    render(profile, session.user.email);
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    window.location.href = 'login.html';
+  });
+
+  init();
+</script>
+</body>
+</html>
