@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,18 @@
 <x-dc>
 <helmet>
 <title>أحمد شوقي | Sports Docs</title>
+  <meta name="description" content="أحمد شوقي — صانع محتوى وثائقي رياضي وكاتب سيناريو ومسوّق رقمي. أفلام وثائقية سينمائية بالعربية عن كرة القدم، مونتاج احترافي، وخدمات تسويق رقمي متكاملة.">
+  <link rel="canonical" href="https://ahmedshawqi.store/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmedshawqi.store/">
+  <meta property="og:title" content="أحمد شوقي | Sports Docs">
+  <meta property="og:description" content="أفلام وثائقية سينمائية بالعربية عن كرة القدم، مونتاج احترافي، وخدمات كتابة محتوى وتسويق رقمي.">
+  <meta property="og:image" content="https://ahmedshawqi.store/assets/ahmed-portrait.jpeg">
+  <meta property="og:locale" content="ar_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="أحمد شوقي | Sports Docs">
+  <meta name="twitter:description" content="أفلام وثائقية سينمائية بالعربية عن كرة القدم، مونتاج احترافي، وخدمات كتابة محتوى وتسويق رقمي.">
+  <meta name="twitter:image" content="https://ahmedshawqi.store/assets/ahmed-portrait.jpeg">
 <meta name="google-site-verification" content="qBKB1caSzXC0YkS_yYWUAMrtJEtaOPd_VOSA2g7-lNk">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-07W2JTLQMC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-07W2JTLQMC');</script>
@@ -812,9 +824,9 @@ class Component extends DCLogic {
     const C = CONTENT[lang];
     const FALLBACK = { madaLawMorocco:'assets/mada-law-morocco.png', madaLawPoster:'assets/mada-law-poster.png', manYarith:'assets/man-yarith-alarsh.jpg', ronaldoRM:'assets/ronaldo-realmadrid.jpg', abokaramLogo:'assets/abokaram-logo.jpeg', basmahCover:'assets/basmah-cover.png', productionStudio:'assets/production-studio.png', digitalMarketing:'assets/digital-marketing.png' };
     const r = window.__resources || {};
-    const mkImg = (src, fit, pos, bg, overlay) => {
+        const mkImg = (src, fit, pos, bg, overlay, alt) => {
       if (!src) return null;
-      const img = React.createElement('img', { src: r[src] || FALLBACK[src] || src, style: { position:'absolute', inset:0, width:'100%', height:'100%', objectFit: fit, objectPosition: pos || 'center', background: bg || '#0a0a09' } });
+            const img = React.createElement('img', { src: r[src] || FALLBACK[src] || src, alt: alt || '', style: { position:'absolute', inset:0, width:'100%', height:'100%', objectFit: fit, objectPosition: pos || 'center', background: bg || '#0a0a09' } });
       if (!overlay) return img;
       return React.createElement(React.Fragment, null, img, React.createElement('div', { 'aria-hidden':'true', key:'ov', style: { position:'absolute', inset:0, zIndex:1, background: overlay, pointerEvents:'none' } }));
     };
@@ -822,7 +834,7 @@ class Component extends DCLogic {
       ...p,
       imgEl: mkImg(p.img, p.fit, p.pos, p.bg,
         p.img === 'ronaldoRM' ? 'linear-gradient(135deg,rgba(203,140,30,0.45) 0%,rgba(160,70,10,0.3) 55%,rgba(100,40,0,0.12) 100%)' :
-        p.img === 'productionStudio' ? 'rgba(10,10,9,0.78)' : null),
+                p.img === 'productionStudio' ? 'rgba(10,10,9,0.78)' : null, p.title),
       goldOverlay: p.img === 'ronaldoRM',
       imgOverlayClass: '',
     }));
