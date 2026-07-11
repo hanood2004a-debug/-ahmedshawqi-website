@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <x-dc>
@@ -109,13 +110,18 @@
       {{ langSwitcher }}
       <a href="مركز-المباريات.html" style="color:#b8b2a8; text-decoration:none; font-size:14px; transition:color 0.2s;" style-hover="color:#cba35a;">مركز المباريات</a>
       <a href="store.html" style="color:#b8b2a8; text-decoration:none; font-size:14px; transition:color 0.2s;" style-hover="color:#cba35a;">المتجر</a>
-                  <a href="login.html" style="display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border:1px solid rgba(203,162,90,0.45); border-radius:2px; color:var(--accent); text-decoration:none; font-size:14px; font-weight:500; transition:background 0.2s,color 0.2s;" style-hover="background:var(--accent); color:#100f0d;">تسجيل دخول</a>
       <a href="https://www.youtube.com/@ahme_sh7" target="_blank" rel="noopener" style="color:#b8b2a8; text-decoration:none; font-size:14px; transition:color 0.2s; display:inline-flex; align-items:center; gap:5px;" style-hover="color:#f4f1ea;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>القناة</a>
       <a href="#work" style="color:#b8b2a8; text-decoration:none; font-size:14px; transition:color 0.2s;" style-hover="color:#f4f1ea;">{{ navWork }}</a>
       <a href="#services" style="color:#b8b2a8; text-decoration:none; font-size:14px; transition:color 0.2s;" style-hover="color:#f4f1ea;">{{ navServices }}</a>
       <a href="#contact-form" style="display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border:1px solid rgba(203,162,90,0.45); border-radius:2px; color:var(--accent); text-decoration:none; font-size:14px; font-weight:500; transition:background 0.2s,color 0.2s;" style-hover="background:var(--accent); color:#100f0d;">{{ navContact }}</a>
     </div>
   </nav>
+
+  <!-- ACCOUNT FAB (corner login/dashboard button) -->
+  <a id="accountFab" href="login.html" title="تسجيل الدخول" style="position:fixed; top:18px; left:clamp(14px,3vw,28px); z-index:60; width:44px; height:44px; border-radius:50%; background:rgba(16,15,13,0.85); border:1.5px solid rgba(203,162,90,0.5); display:flex; align-items:center; justify-content:center; text-decoration:none; backdrop-filter:blur(4px); transition:border-color .2s,background .2s;" style-hover="border-color:#cba35a; background:rgba(203,162,90,0.12);">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#cba35a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span id="accountFabDot" style="display:none; position:absolute; top:-1px; left:-1px; width:12px; height:12px; border-radius:50%; background:#6fbf8b; border:2px solid #100f0d;"></span>
+  </a>
 
   <!-- HERO -->
   <header id="hero" data-screen-label="Hero" style="position:relative; min-height:100vh; display:grid; grid-template-columns:1fr clamp(260px,36%,480px); align-items:center; gap:clamp(32px,4vw,64px); padding:120px clamp(20px,5vw,72px) 90px; scroll-margin-top:80px; overflow:hidden;">
@@ -935,5 +941,25 @@ class Component extends DCLogic {
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"06aa855d44304ba2abda5f842f831c4d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>
+  (function () {
+    try {
+      const SUPABASE_URL = 'https://ztuflxgrpibcuvpvgwjf.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0dWZseGdycGliY3V2cHZnd2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2OTA0MjcsImV4cCI6MjA5OTI2NjQyN30.ThkQEYPrhhi0nz81iw-xO_A7f-l4F7QPjYXg8iqwRfc';
+      const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      });
+      const fab = document.getElementById('accountFab');
+      const dot = document.getElementById('accountFabDot');
+      sb.auth.getSession().then(({ data }) => {
+        if (data && data.session) {
+          fab.href = 'dashboard.html';
+          fab.title = 'لوحة العميل';
+          dot.style.display = 'block';
+        }
+      });
+    } catch (e) { /* silent fail, fab keeps default login link */ }
+  })();
+</script>
 </body>
 </html>

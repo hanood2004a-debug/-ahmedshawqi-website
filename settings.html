@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إعدادات الحساب | أحمد شوقي</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#100f0d; color:#f4f1ea; font-family:'Tajawal',sans-serif; min-height:100vh; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:1px solid rgba(203,162,90,0.18); }
+  .topbar .brand { display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; color:#f4f1ea; }
+  .topbar .brand img { width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.4); }
+  .topbar .right { display:flex; align-items:center; gap:10px; }
+  .ghost-btn { background:transparent; border:1px solid rgba(203,162,90,0.35); color:#cba35a; padding:8px 16px; border-radius:5px; cursor:pointer; font-family:'Tajawal',sans-serif; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .ghost-btn:hover { background:rgba(203,162,90,0.08); }
+  .container { max-width:600px; margin:0 auto; padding:36px 20px 80px; }
+  .page-title { font-size:22px; font-weight:800; margin:0 0 4px; }
+  .page-sub { color:#8a857c; font-size:13.5px; margin:0 0 28px; }
+  .vip-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(203,162,90,0.12); color:#cba35a; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.08em; padding:4px 11px; border-radius:12px; border:1px solid rgba(203,162,90,0.35); margin-bottom:24px; }
+  .card { background:#151210; border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:24px; margin-bottom:20px; }
+  .card h2 { font-size:15px; margin:0 0 6px; color:#e8caa0; }
+  .card .hint { font-size:12.5px; color:#8a857c; margin:0 0 18px; }
+  .field { margin-bottom:16px; }
+  .field:last-child { margin-bottom:0; }
+  label { display:block; color:#e8caa0; font-size:13px; margin:0 0 6px; }
+  input { width:100%; background:#0e0d0b; border:1px solid rgba(203,162,90,0.3); color:#f4f1ea; padding:11px 13px; border-radius:5px; font-family:'Tajawal',sans-serif; font-size:14px; }
+  input:focus { outline:none; border-color:#cba35a; }
+  input[disabled] { color:#8a857c; cursor:not-allowed; }
+  .submit-btn { background:#cba35a; border:none; color:#161310; font-weight:800; padding:11px 22px; border-radius:5px; cursor:pointer; font-family:'Tajawal',sans-serif; font-size:14px; margin-top:6px; transition:.2s; }
+  .submit-btn:hover { opacity:.9; }
+  .submit-btn:disabled { opacity:.5; cursor:not-allowed; }
+  .danger-btn { background:transparent; border:1px solid rgba(224,122,99,0.45); color:#e07a63; font-weight:700; padding:10px 20px; border-radius:5px; cursor:pointer; font-family:'Tajawal',sans-serif; font-size:13.5px; }
+  .danger-btn:hover { background:rgba(224,122,99,0.08); }
+  .msg { font-size:13px; margin-top:12px; min-height:18px; }
+  .msg.error { color:#e07a63; }
+  .msg.success { color:#6fbf8b; }
+  .row-info { display:flex; align-items:center; justify-content:space-between; padding:6px 0; }
+  .row-info .k { font-size:13px; color:#8a857c; }
+  .row-info .v { font-size:13.5px; color:#f4f1ea; font-weight:600; }
+  .back-link { display:inline-flex; align-items:center; gap:6px; color:#8a857c; font-size:13px; text-decoration:none; margin-bottom:22px; }
+  .back-link:hover { color:#cba35a; }
+  .loading { text-align:center; padding:80px 20px; color:#6f6a61; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="index.html" class="brand"><img src="assets/logo.jpg" alt="أحمد شوقي"><span>أحمد شوقي</span></a>
+  <div class="right">
+    <button class="ghost-btn" id="logoutBtn">تسجيل الخروج</button>
+  </div>
+</div>
+
+<div class="container" id="app">
+  <div class="loading">جارٍ التحميل...</div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://ztuflxgrpibcuvpvgwjf.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0dWZseGdycGliY3V2cHZnd2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2OTA0MjcsImV4cCI6MjA5OTI2NjQyN30.ThkQEYPrhhi0nz81iw-xO_A7f-l4F7QPjYXg8iqwRfc';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+  });
+
+  const app = document.getElementById('app');
+
+  function render(session, profile) {
+    const email = session.user.email;
+    const isVip = !!(profile && profile.is_vip);
+    const provider = session.user.app_metadata && session.user.app_metadata.provider;
+    const isSocial = provider && provider !== 'email';
+
+    app.innerHTML = `
+      <a href="dashboard.html" class="back-link">→ رجوع للوحة العميل</a>
+      <h1 class="page-title">إعدادات الحساب</h1>
+      <p class="page-sub">إدارة بيانات حسابك وكلمة المرور</p>
+      ${isVip ? '<div class="vip-badge">★ عميل VIP</div>' : ''}
+
+      <div class="card">
+        <h2>معلومات الحساب</h2>
+        <p class="hint">هاي بيانات حسابك الأساسية</p>
+        <div class="row-info"><span class="k">البريد الإلكتروني</span><span class="v">${email}</span></div>
+        <div class="row-info"><span class="k">طريقة الدخول</span><span class="v">${isSocial ? (provider === 'google' ? 'Google' : provider === 'facebook' ? 'Facebook' : provider) : 'بريد إلكتروني وكلمة مرور'}</span></div>
+      </div>
+
+      ${isSocial ? `
+        <div class="card">
+          <h2>كلمة المرور</h2>
+          <p class="hint">حسابك مربوط عبر ${provider === 'google' ? 'Google' : 'Facebook'}، فما في كلمة مرور لتغييرها من هون. لإدارة الدخول راجع إعدادات حساب ${provider === 'google' ? 'Google' : 'Facebook'} مباشرة.</p>
+        </div>
+      ` : `
+        <div class="card">
+          <h2>تغيير كلمة المرور</h2>
+          <p class="hint">اكتب كلمة مرور جديدة (٦ أحرف أو أكثر) واحفظها</p>
+          <form id="pwForm">
+            <div class="field">
+              <label>كلمة المرور الجديدة</label>
+              <input type="password" id="newPassword" required minlength="6" autocomplete="new-password">
+            </div>
+            <div class="field">
+              <label>تأكيد كلمة المرور الجديدة</label>
+              <input type="password" id="confirmPassword" required minlength="6" autocomplete="new-password">
+            </div>
+            <button type="submit" class="submit-btn" id="pwSubmit">حفظ كلمة المرور</button>
+            <div class="msg" id="pwMsg"></div>
+          </form>
+        </div>
+      `}
+
+      <div class="card">
+        <h2>الجلسة</h2>
+        <p class="hint">هاد الجهاز/المتصفح رح يفضل مسجل دخول تلقائياً لحد ما تسجل خروج بنفسك.</p>
+        <button class="danger-btn" id="logoutAllBtn">تسجيل الخروج من هالجلسة</button>
+      </div>
+    `;
+
+    const pwForm = document.getElementById('pwForm');
+    if (pwForm) {
+      pwForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const pwSubmit = document.getElementById('pwSubmit');
+        const pwMsg = document.getElementById('pwMsg');
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        pwMsg.textContent = '';
+        pwMsg.className = 'msg';
+
+        if (newPassword !== confirmPassword) {
+          pwMsg.textContent = 'كلمتا المرور غير متطابقتين';
+          pwMsg.className = 'msg error';
+          return;
+        }
+
+        pwSubmit.disabled = true;
+        try {
+          const { error } = await sb.auth.updateUser({ password: newPassword });
+          if (error) throw error;
+          pwMsg.textContent = 'تم تغيير كلمة المرور بنجاح';
+          pwMsg.className = 'msg success';
+          pwForm.reset();
+        } catch (err) {
+          pwMsg.textContent = err.message || 'حدث خطأ، حاول مرة أخرى';
+          pwMsg.className = 'msg error';
+        } finally {
+          pwSubmit.disabled = false;
+        }
+      });
+    }
+
+    document.getElementById('logoutAllBtn').addEventListener('click', async () => {
+      await sb.auth.signOut();
+      window.location.href = 'login.html';
+    });
+  }
+
+  async function init() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) { window.location.href = 'login.html'; return; }
+
+    const { data: profile } = await sb
+      .from('profiles')
+      .select('*')
+      .eq('id', session.user.id)
+      .single();
+
+    render(session, profile);
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    window.location.href = 'login.html';
+  });
+
+  init();
+</script>
+</body>
+</html>
