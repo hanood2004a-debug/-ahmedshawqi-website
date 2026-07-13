@@ -793,7 +793,7 @@
         __publicField(this, "__name");
         __publicField(this, "__sub");
         __publicField(this, "__needsDidMount", false);
-        /** Snapshot of the registry's streaming flags taken at render time —
+        /** Snapshot of the registry's streaming flags taken at render time \u2014
          *  builders read it off the RenderCtx (this) to pick placeholder vs
          *  render-nothing for unresolved values. */
         __publicField(this, "__streamingNow", false);
@@ -806,7 +806,7 @@
         __publicField(this, "__failedLogic", null);
         __publicField(this, "__failedUserProps", null);
         __publicField(this, "__failedVer", -1);
-        /** Per-instance constructor error — kept here (not on the registry entry)
+        /** Per-instance constructor error \u2014 kept here (not on the registry entry)
          *  so one instance's successful construct can't hide a sibling's failure,
          *  and a construct can never wipe an eval error `updateJs` recorded on
          *  `r.logicError`. */
@@ -835,7 +835,7 @@
         );
       }
       /** Instantiate the logic class (or the no-op base) and adopt `prevState`
-       *  over its initial state — used both at mount and on hot-swap. */
+       *  over its initial state \u2014 used both at mount and on hot-swap. */
       __makeLogic(Logic, prevState) {
         const L = Logic || StreamableLogic;
         try {
@@ -1045,7 +1045,7 @@
     }
     return cur;
   }
-  var BABEL_URL = "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js";
+  var BABEL_URL = "https://cdn.jsdelivr.net/npm/@babel/standalone@7.29.0/babel.min.js";
   var BABEL_SRI = "sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y";
   var GLOBAL_POLL_INTERVAL_MS = 50;
   var GLOBAL_POLL_TIMEOUT_MS = 3e4;
@@ -1591,9 +1591,9 @@
   }
 
   // src/index.ts
-  var REACT_URL = "https://unpkg.com/react@18.3.1/umd/react.production.min.js";
+  var REACT_URL = "/vendor/react.production.min.js";
   var REACT_SRI = "sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z";
-  var REACT_DOM_URL = "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js";
+  var REACT_DOM_URL = "https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js";
   var REACT_DOM_SRI = "sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1";
   function hideRawTemplate() {
     const s = document.createElement("style");
