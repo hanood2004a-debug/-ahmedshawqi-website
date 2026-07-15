@@ -123,6 +123,7 @@
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (typeof gtag === 'function') { gtag('event', 'login_start', { mode: mode }); }
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     submitBtn.disabled = true;
