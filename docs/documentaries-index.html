@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الأرشيف | كل الوثائقيات الرياضية | أحمد شوقي</title>
+<meta name="description" content="أرشيف كامل للوثائقيات الرياضية السينمائية من أحمد شوقي — قصص كرة قدم، لحظات فاصلة، وسلسلة «ماذا لو؟».">
+<link rel="canonical" href="https://ahmedshawqi.store/docs/index.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="الأرشيف | كل الوثائقيات الرياضية | أحمد شوقي">
+<meta property="og:description" content="أرشيف كامل للوثائقيات الرياضية السينمائية — قصص كرة قدم ولحظات فاصلة.">
+<meta property="og:url" content="https://ahmedshawqi.store/docs/index.html">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="أحمد شوقي | Sports Docs">
+
+<!-- Schema.org — قائمة الفيديوهات، يساعد جوجل يفهم إنها صفحة أرشيف/مجموعة -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "أرشيف الوثائقيات الرياضية",
+  "url": "https://ahmedshawqi.store/docs/index.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "أحمد شوقي",
+    "logo": { "@type": "ImageObject", "url": "https://ahmedshawqi.store/assets/logo.png" }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Tajawal:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-0:#0a0f0c; --bg-1:#111813; --bg-2:#182019;
+    --line:#26332b; --gold:#e3a857; --gold-dim:#8a6a3a; --pitch:#3d7a56;
+    --text-hi:#eee9e0; --text-mid:#a9b3ac; --text-low:#6e786f;
+    --disp:'Cairo',sans-serif; --body:'Tajawal',sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.01ms !important; transition-duration:.01ms !important;} }
+  body{background:var(--bg-0); color:var(--text-hi); font-family:var(--body); line-height:1.7;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, input:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .pitch-lines{position:fixed; inset:0; z-index:0; opacity:.05; pointer-events:none;
+    background-image:repeating-linear-gradient(90deg, var(--pitch) 0 1px, transparent 1px 120px);}
+
+  header.site{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center;
+    padding:22px 6vw; border-bottom:1px solid var(--line);}
+  .brand{font-family:var(--disp); font-weight:800; font-size:1.05rem;}
+  .brand span{color:var(--gold);}
+  nav.site a{font-family:var(--mono); font-size:.78rem; color:var(--text-mid); text-decoration:none; margin-inline-start:22px;}
+  nav.site a:hover{color:var(--gold);}
+
+  .hero{position:relative; z-index:1; padding:8vh 6vw 5vh; border-bottom:1px solid var(--line);}
+  .kicker{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.76rem; color:var(--gold);
+    text-transform:uppercase; letter-spacing:.12em; margin-bottom:18px;}
+  .kicker::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
+  h1{font-family:var(--disp); font-weight:800; font-size:clamp(2rem,5vw,3.2rem); max-width:18ch; margin-bottom:16px;}
+  .dek{color:var(--text-mid); max-width:56ch; font-size:1.02rem;}
+
+  .toolbar{
+    position:relative; z-index:1;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    padding:24px 6vw; border-bottom:1px solid var(--line);
+  }
+  .toolbar label{font-family:var(--mono); font-size:.72rem; color:var(--text-low); margin-inline-end:6px;}
+  .filter-btn{
+    font-family:var(--mono); font-size:.76rem; color:var(--text-mid);
+    background:transparent; border:1px solid var(--line); padding:8px 16px;
+    cursor:pointer; transition:all .2s ease;
+  }
+  .filter-btn.active, .filter-btn:hover{color:var(--bg-0); background:var(--gold); border-color:var(--gold);}
+  .search-box{
+    font-family:var(--body); font-size:.9rem; color:var(--text-hi);
+    background:var(--bg-1); border:1px solid var(--line); padding:9px 16px;
+    margin-inline-start:auto; min-width:220px;
+  }
+  .search-box::placeholder{color:var(--text-low);}
+
+  .archive{position:relative; z-index:1; padding:6vh 6vw 10vh;}
+  .count-line{font-family:var(--mono); font-size:.76rem; color:var(--text-low); margin-bottom:5vh;}
+  .count-line b{color:var(--gold);}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:24px;}
+  .card{
+    border:1px solid var(--line); background:var(--bg-1); text-decoration:none; display:block;
+    transition:border-color .2s ease, transform .2s ease; overflow:hidden;
+  }
+  .card:hover{border-color:var(--gold-dim); transform:translateY(-3px);}
+  .thumb{
+    aspect-ratio:16/9; background:var(--bg-2); position:relative;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text-low); font-family:var(--mono); font-size:.72rem;
+  }
+  .thumb .dur{
+    position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,.65);
+    font-family:var(--mono); font-size:.7rem; padding:3px 8px; color:var(--text-hi);
+  }
+  .card-body{padding:18px 20px 22px;}
+  .tag{font-family:var(--mono); font-size:.68rem; color:var(--gold); text-transform:uppercase; letter-spacing:.08em;}
+  .card h3{font-family:var(--disp); font-size:1.05rem; margin:9px 0 8px; line-height:1.4;}
+  .card p{font-size:.84rem; color:var(--text-mid);}
+  .card .meta{margin-top:12px; font-family:var(--mono); font-size:.68rem; color:var(--text-low);}
+
+  .empty-state{
+    display:none; text-align:center; padding:10vh 0; color:var(--text-low); font-family:var(--mono); font-size:.85rem;
+  }
+  .empty-state.show{display:block;}
+
+  footer.cta{
+    position:relative; z-index:1; padding:9vh 6vw; text-align:center;
+    border-top:1px solid var(--line); display:grid; gap:18px; justify-items:center;
+  }
+  footer.cta h2{font-family:var(--disp); font-weight:800; font-size:clamp(1.3rem,4vw,2rem); max-width:20ch;}
+  footer.cta p{color:var(--text-mid); max-width:48ch;}
+  .btn{font-family:var(--mono); font-size:.85rem; text-decoration:none; color:var(--bg-0); background:var(--gold);
+    padding:14px 30px; letter-spacing:.03em; transition:opacity .2s ease;}
+  .btn:hover{opacity:.85;}
+  .foot-meta{font-family:var(--mono); font-size:.72rem; color:var(--text-low); margin-top:8px;}
+
+  @media (max-width:640px){
+    .search-box{margin-inline-start:0; width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pitch-lines" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="brand">أحمد شوقي <span>| Sports Docs</span></div>
+  <nav class="site">
+    <a href="/index.html">الرئيسية</a>
+    <a href="/store.html">المتجر</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="kicker">الأرشيف الكامل</div>
+  <h1>كل الوثائقيات</h1>
+  <p class="dek">لحظات فاصلة في تاريخ كرة القدم، مرويّة بأسلوب سينمائي. تصفّح حسب النوع أو ابحث عن حلقة معيّنة.</p>
+</section>
+
+<div class="toolbar">
+  <label>تصنيف:</label>
+  <button class="filter-btn active" data-filter="all">الكل</button>
+  <button class="filter-btn" data-filter="ماذا-لو">ماذا لو؟</button>
+  <button class="filter-btn" data-filter="طويل">وثائقي طويل</button>
+  <button class="filter-btn" data-filter="قصير">Shorts</button>
+  <input class="search-box" type="text" id="searchInput" placeholder="ابحث عن حلقة...">
+</div>
+
+<section class="archive">
+  <p class="count-line"><b id="visibleCount">6</b> حلقة</p>
+
+  <div class="grid" id="docsGrid">
+
+    <a class="card" href="/docs/kolo-muani-2022.html" data-cat="ماذا-لو" data-title="ماذا لو لم يهدر كولو مواني الهدف">
+      <div class="thumb">صورة مصغّرة<span class="dur">11:24</span></div>
+      <div class="card-body">
+        <div class="tag">ماذا لو؟</div>
+        <h3>ماذا لو لم يهدر كولو مواني الهدف؟</h3>
+        <p>نهائي مونديال 2022 — اللحظة التي كادت تغيّر كل شيء.</p>
+        <div class="meta">10 يناير 2026</div>
+      </div>
+    </a>
+
+    <a class="card" href="/docs/morocco-france-2022.html" data-cat="ماذا-لو" data-title="ماذا لو تأهل المغرب لنهائي 2022">
+      <div class="thumb">صورة مصغّرة<span class="dur">9:47</span></div>
+      <div class="card-body">
+        <div class="tag">ماذا لو؟</div>
+        <h3>ماذا لو تأهل المغرب لنهائي 2022؟</h3>
+        <p>نصف نهائي كان يمكن أن يغيّر تاريخ الكرة العربية والأفريقية.</p>
+        <div class="meta">2026</div>
+      </div>
+    </a>
+
+    <a class="card" href="/docs/just-fontaine.html" data-cat="ماذا-لو" data-title="ماذا لو لم تصب جوست فونتين">
+      <div class="thumb">صورة مصغّرة<span class="dur">8:12</span></div>
+      <div class="card-body">
+        <div class="tag">ماذا لو؟</div>
+        <h3>ماذا لو لم تُصب جوست فونتين؟</h3>
+        <p>الإصابة التي حرمت العالم من أحد أعظم الهدافين في أوج عطائه.</p>
+        <div class="meta">2026</div>
+      </div>
+    </a>
+
+    <a class="card" href="/docs/top10-world-cup-scorers.html" data-cat="طويل" data-title="أفضل 10 هدافين في تاريخ المونديال">
+      <div class="thumb">صورة مصغّرة<span class="dur">18:30</span></div>
+      <div class="card-body">
+        <div class="tag">وثائقي طويل</div>
+        <h3>أفضل 10 هدافين في تاريخ كأس العالم</h3>
+        <p>رحلة عبر أرقام وأساطير صنعت تاريخ المونديال.</p>
+        <div class="meta">2026</div>
+      </div>
+    </a>
+
+    <a class="card" href="/docs/egypt-iran-2026.html" data-cat="قصير" data-title="مصر وإيران تأهل 2026">
+      <div class="thumb">صورة مصغّرة<span class="dur">1:02</span></div>
+      <div class="card-body">
+        <div class="tag">Shorts</div>
+        <h3>لحظة تأهل عربية في مونديال 2026</h3>
+        <p>تغطية سريعة للحظة تأهل تاريخية.</p>
+        <div class="meta">2026</div>
+      </div>
+    </a>
+
+    <a class="card" href="/docs/psg-champions-league.html" data-cat="طويل" data-title="باريس سان جيرمان دوري الأبطال">
+      <div class="thumb">صورة مصغّرة<span class="dur">14:55</span></div>
+      <div class="card-body">
+        <div class="tag">وثائقي طويل</div>
+        <h3>مسيرة باريس سان جيرمان نحو أوروبا</h3>
+        <p>كيف بُني مشروع بطولة دوري الأبطال خطوة بخطوة.</p>
+        <div class="meta">2026</div>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="empty-state" id="emptyState">ما في نتائج مطابقة. جرّب كلمة بحث ثانية.</p>
+</section>
+
+<footer class="cta">
+  <h2>عندك فكرة وثائقية أو مشروع محتوى؟</h2>
+  <p>أشتغل على كتابة السيناريو، البحث، والمونتاج السينمائي لقصص كرة القدم.</p>
+  <a class="btn" href="/store.html">تصفّح الخدمات</a>
+  <div class="foot-meta">© 2026 أحمد شوقي — جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+(function(){
+  var cards = Array.from(document.querySelectorAll('.card'));
+  var buttons = Array.from(document.querySelectorAll('.filter-btn'));
+  var searchInput = document.getElementById('searchInput');
+  var countEl = document.getElementById('visibleCount');
+  var emptyState = document.getElementById('emptyState');
+  var activeFilter = 'all';
+
+  function applyFilters(){
+    var q = searchInput.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card){
+      var matchesFilter = activeFilter === 'all' || card.dataset.cat === activeFilter;
+      var matchesSearch = !q || card.dataset.title.toLowerCase().indexOf(q) !== -1;
+      var show = matchesFilter && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    countEl.textContent = visible;
+    emptyState.classList.toggle('show', visible === 0);
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+})();
+</script>
+
+</body>
+</html>
