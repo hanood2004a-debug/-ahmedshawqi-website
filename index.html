@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>أحمد شوقي | Frontend Developer</title>
+<meta name="description" content="أحمد شوقي — مطوّر واجهات أمامية. مواقع متعددة اللغات، أنظمة تسجيل دخول، وميزات تفاعلية من الفكرة للنشر.">
+<link rel="canonical" href="https://ahmedshawqi.store/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ahmedshawqi.store/">
+<meta property="og:title" content="أحمد شوقي | Frontend Developer">
+<meta property="og:image" content="https://ahmedshawqi.store/assets/ahmed-portrait.jpeg">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+@font-face { font-family:'Thmanyah Display'; src:url('assets/fonts/thmanyahserifdisplay-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Thmanyah Display'; src:url('assets/fonts/thmanyahserifdisplay-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face { font-family:'Thmanyah Display'; src:url('assets/fonts/thmanyahserifdisplay-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+html{scroll-behavior:smooth;}
+body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
+::selection{background:#cba35a;color:#100f0d;}
+@keyframes scrollHint{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(7px);opacity:1}}
+@keyframes recPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.collage-card:hover{z-index:10 !important;}
+.collage-card:hover .collage-img{transform:scale(1.1) !important;}
+.svc-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease !important;}
+.svc-card:hover{transform:translateY(-5px) !important;border-color:rgba(203,162,90,.55) !important;box-shadow:0 0 0 1px rgba(203,162,90,.45),0 18px 50px rgba(0,0,0,.55) !important;}
+.work-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease !important;}
+.work-card:hover{transform:translateY(-4px) !important;border-color:rgba(203,162,90,.5) !important;box-shadow:0 0 0 1px rgba(203,162,90,.4),0 16px 48px rgba(0,0,0,.5) !important;}
+@keyframes cfFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.cf-field{margin-bottom:18px;animation:cfFadeUp .5s ease both;}
+.cf-field label{display:block;color:#e8caa0;font-size:.85rem;margin-bottom:6px;}
+.cf-field input,.cf-field select,.cf-field textarea{width:100%;background:#151210;border:1px solid rgba(201,162,77,.35);color:#f2ece1;padding:12px 14px;border-radius:2px;font-family:'Tajawal',sans-serif;font-size:.9rem;box-sizing:border-box;}
+.cf-field textarea{min-height:120px;resize:vertical;}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{outline:none;border-color:#c9a24d;box-shadow:0 0 0 3px rgba(201,162,77,.15);}
+.cf-submit{width:100%;background:#c9a24d;border:none;color:#161310;font-weight:700;padding:13px;border-radius:2px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.95rem;}
+.cf-submit:hover{opacity:.92;box-shadow:0 0 16px rgba(201,162,77,.35);}
+.cf-status{text-align:center;margin-top:14px;font-size:.85rem;display:none;}
+.cf-status.success{color:#3fae6a;display:block;}
+.cf-status.error{color:#c85b4a;display:block;}
+.rw-star{cursor:pointer;color:#3a342c;transition:color .15s,transform .15s;user-select:none;}
+@media(max-width:900px){
+  nav:first-of-type{flex-wrap:wrap !important;justify-content:center !important;padding:12px 16px !important;gap:10px !important;}
+  nav:first-of-type > div{flex-wrap:wrap !important;justify-content:center !important;width:100% !important;gap:8px 14px !important;}
+  #hero{grid-template-columns:1fr !important;min-height:auto !important;padding:170px 20px 60px !important;text-align:center !important;row-gap:32px !important;}
+  #hero > div:nth-child(6){order:-1 !important;}
+  #hero h1{font-size:clamp(36px,13vw,64px) !important;}
+  #about > div{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+<div style="--accent:#cba35a; background:#100f0d; color:#f4f1ea; font-family:'Thmanyah Sans','IBM Plex Sans Arabic',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; right:0; left:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,72px); background:linear-gradient(180deg,rgba(16,15,13,0.92),rgba(16,15,13,0)); backdrop-filter:blur(2px);">
+<a href="#hero" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#f4f1ea;">
+<img src="assets/logo.jpg" alt="Ahmed Shawqi" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.4);">
+<span style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;">أحمد شوقي</span>
+</a>
+<div style="display:flex; align-items:center; gap:clamp(8px,1.8vw,26px);">
+<div id="langSwitcher" style="display:flex; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:11px;">
+<button data-lang="ar" style="background:none; border:1px solid rgba(203,162,90,.35); color:#cba35a; padding:3px 8px; border-radius:2px; cursor:pointer;">AR</button>
+<button data-lang="en" style="background:none; border:1px solid rgba(255,255,255,.15); color:#8a857c; padding:3px 8px; border-radius:2px; cursor:pointer;">EN</button>
+<button data-lang="es" style="background:none; border:1px solid rgba(255,255,255,.15); color:#8a857c; padding:3px 8px; border-radius:2px; cursor:pointer;">ES</button>
+</div>
+<a href="sports.html" style="color:#b8b2a8; text-decoration:none; font-size:14px;"><span data-i18n="nav.content">صناعة المحتوى</span></a>
+<a href="docs/" style="color:#b8b2a8; text-decoration:none; font-size:14px;"><span data-i18n="nav.archive">الأرشيف</span></a>
+<a href="#work" style="color:#b8b2a8; text-decoration:none; font-size:14px;"><span data-i18n="nav.work">أعمالي</span></a>
+<a href="#services" style="color:#b8b2a8; text-decoration:none; font-size:14px;"><span data-i18n="nav.services">خدماتي</span></a>
+<a href="#contact-form" style="display:inline-flex; align-items:center; gap:8px; padding:9px 18px; margin-inline-end:clamp(48px,6vw,64px); border:1px solid rgba(203,162,90,0.45); border-radius:2px; color:var(--accent); text-decoration:none; font-size:14px; font-weight:500;"><span data-i18n="nav.contact">تواصل معي</span></a>
+</div>
+</nav>
+
+<a id="accountFab" href="login.html" title="تسجيل الدخول" style="position:fixed; top:18px; left:clamp(14px,3vw,28px); z-index:60; width:44px; height:44px; border-radius:50%; background:rgba(16,15,13,0.85); border:1.5px solid rgba(203,162,90,0.5); display:flex; align-items:center; justify-content:center; text-decoration:none; backdrop-filter:blur(4px);">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#cba35a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</a>
+
+<!-- HERO -->
+<header id="hero" style="position:relative; min-height:100vh; display:grid; grid-template-columns:1fr clamp(260px,36%,480px); align-items:center; gap:clamp(32px,4vw,64px); padding:120px clamp(20px,5vw,72px) 90px; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; inset:0; z-index:0; background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.025) 0 14px,transparent 14px 28px); background-color:#13110e;"></div>
+<div aria-hidden="true" style="position:absolute; inset:0; z-index:1; background:radial-gradient(120% 100% at 80% 10%,rgba(203,162,90,0.08),transparent 55%),linear-gradient(180deg,rgba(16,15,13,0.5),rgba(16,15,13,0.96));"></div>
+
+<div style="position:relative; z-index:4; min-width:0; animation:fadeUp 0.9s ease both;">
+<div style="display:flex; align-items:center; gap:14px; margin-bottom:26px;">
+<span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); letter-spacing:0.18em;">BUILD <span style="display:inline-block; animation:recPulse 1.4s ease-in-out infinite;">●</span></span>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8a857c; letter-spacing:0.16em;">FRONTEND DEVELOPER</span>
+</div>
+<p style="margin:0 0 18px; font-size:clamp(15px,1.7vw,19px); color:var(--accent); font-weight:500;"><span data-i18n="hero.badge">أبني مواقع تشتغل صح</span></p>
+<h1 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; line-height:.98; font-size:clamp(48px,7.5vw,120px); letter-spacing:-0.03em; background:linear-gradient(120deg,#e8d49a 0%,#cba35a 28%,#f0dc9a 52%,#cba35a 76%,#e8d49a 100%); background-size:300% 300%; background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; animation:gradientFlow 8s ease infinite;">أحمد شوقي</h1>
+<p style="margin:28px 0 0; max-width:560px; font-size:clamp(18px,2.2vw,28px); line-height:1.5; font-weight:300; color:#e7e2d8;"><span data-i18n="hero.p">مطوّر واجهات أمامية بخبرة <span style="color:var(--accent); font-weight:500;">حقيقية وموثقة</span> — من موقع حي متعدد اللغات لأنظمة تسجيل دخول <span style="color:var(--accent); font-weight:500;">وميزات تفاعلية</span> كاملة.</span></p>
+<div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:42px;">
+<a href="#work" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:var(--accent); color:#100f0d; text-decoration:none; font-weight:700; font-size:15px; border-radius:2px;"><span data-i18n="hero.cta1">شوف أعمالي</span></a>
+<a href="#contact-form" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border:1px solid rgba(244,241,234,0.22); color:#f4f1ea; text-decoration:none; font-weight:500; font-size:15px; border-radius:2px;"><span data-i18n="hero.cta2">احجز استشارة</span></a>
+</div>
+</div>
+
+<!-- COLLAGE -->
+<div style="position:relative; z-index:4; display:flex; align-items:center; justify-content:center; height:100%;">
+<div style="position:relative; width:100%; max-width:300px; height:340px; margin:0 auto; overflow:visible;">
+<div class="collage-card" style="position:absolute; top:30px; left:28px; width:48%; aspect-ratio:3/4; transform:rotate(-4deg); z-index:1; overflow:hidden; border:2px solid rgba(203,162,90,0.25); box-shadow:0 10px 32px rgba(0,0,0,0.7);">
+<img src="assets/production-studio.png" alt="بيئة العمل" class="collage-img" style="width:100%; height:100%; object-fit:cover; filter:grayscale(45%) contrast(1.1); transition:transform .7s cubic-bezier(.25,.46,.45,.94);">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(10,10,9,.85));"></div>
+</div>
+<div class="collage-card" style="position:absolute; top:14px; left:50%; transform:translateX(-45%) rotate(2deg); width:52%; aspect-ratio:3/4; z-index:3; overflow:hidden; border:2px solid rgba(203,162,90,0.5); box-shadow:0 16px 50px rgba(0,0,0,0.9);">
+<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" class="collage-img" style="width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:grayscale(20%) contrast(1.08); transition:transform .7s cubic-bezier(.25,.46,.45,.94);">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,10,9,.2) 0%,transparent 35%,rgba(10,10,9,.75) 100%);"></div>
+<div style="position:absolute; bottom:10px; right:10px; font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(203,162,90,.75); letter-spacing:.12em;">FRONTEND DEV</div>
+</div>
+<div class="collage-card" style="position:absolute; top:45px; right:14px; width:44%; aspect-ratio:3/4; transform:rotate(6deg); z-index:2; overflow:hidden; border:2px solid rgba(203,162,90,0.18); box-shadow:0 8px 28px rgba(0,0,0,0.7);">
+<img src="assets/digital-marketing.png" alt="تسويق رقمي" class="collage-img" style="width:100%; height:100%; object-fit:cover; filter:grayscale(45%) contrast(1.08); transition:transform .7s cubic-bezier(.25,.46,.45,.94);">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 38%,rgba(10,10,9,.85));"></div>
+</div>
+<div aria-hidden="true" style="position:absolute; inset:18%; background:radial-gradient(circle,rgba(203,162,90,.10),transparent 70%); pointer-events:none; z-index:0;"></div>
+</div>
+</div>
+
+<span style="position:absolute; left:clamp(20px,5vw,72px); top:70px; z-index:4; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6f6a61; letter-spacing:.12em;">JUN 2026 — PRESENT</span>
+<div style="position:absolute; left:clamp(20px,5vw,72px); bottom:70px; z-index:4; display:flex; align-items:center; gap:10px;">
+<div style="width:18px; height:30px; border:1.5px solid rgba(244,241,234,.3); border-radius:11px; display:flex; justify-content:center; padding-top:6px;">
+<span style="width:3px; height:7px; background:var(--accent); border-radius:2px; animation:scrollHint 1.6s ease-in-out infinite;"></span>
+</div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8a857c; letter-spacing:.14em;">SCROLL</span>
+</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
+<div style="display:grid; grid-template-columns:1fr clamp(260px,32%,400px); gap:clamp(48px,6vw,90px); align-items:center;">
+<div style="display:flex; flex-direction:column; gap:32px;">
+<div style="display:flex; align-items:baseline; gap:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:13px;">01</span>
+<h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(26px,3.5vw,44px); letter-spacing:-0.02em;"><span data-i18n="about.title">مين أحمد شوقي؟</span></h2>
+</div>
+<p style="margin:0; font-size:clamp(17px,1.9vw,22px); line-height:1.75; font-weight:300; color:#e7e2d8;"><span data-i18n="about.p1">مطوّر واجهات أمامية من غزة، بنيت <span style="color:#cba35a; font-weight:600;">ahmedshawqi.store</span> بالكامل من الصفر — موقع حي بـ3 لغات، بمصادقة حقيقية وميزات تفاعلية.</span></p>
+<p style="margin:0; font-size:clamp(15px,1.6vw,18px); line-height:1.85; color:#9a9490;"><span data-i18n="about.p2">بشتغل لحالي من الفكرة للنشر: تصميم، بناء، اختبار، ونشر على Cloudflare Pages. بحب الكود النظيف والواجهات يلي فعلاً بتسهّل حياة المستخدم.</span></p>
+<div style="margin-top:8px; padding:24px 20px; border-top:1px solid rgba(203,162,90,0.2); border-bottom:1px solid rgba(203,162,90,0.2); text-align:center;">
+<p style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-style:italic; font-weight:700; font-size:clamp(16px,1.9vw,21px); color:#cba35a; line-height:1.65;"><span data-i18n="about.quote">الكود لازم يشتغل صح، والتصميم لازم يوصل الرسالة — من غير ما يعقّد حياة حدا.</span></p>
+</div>
+</div>
+<div style="position:relative;">
+<div aria-hidden="true" style="position:absolute; inset:-10px -10px 10px 10px; border:1px solid rgba(203,162,90,0.25); pointer-events:none; z-index:0;"></div>
+<div style="position:relative; z-index:1; aspect-ratio:3/4; overflow:hidden; background:#1a1815;">
+<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block;">
+<div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,rgba(10,10,9,0.65));"></div>
+<div style="position:absolute; bottom:18px; right:18px; left:18px;">
+<div style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:17px; color:#f4f1ea;">أحمد شوقي</div>
+<div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#cba35a; letter-spacing:.1em; margin-top:3px;">FRONTEND DEVELOPER</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); background:#0c0b09; border-top:1px solid rgba(255,255,255,0.06);">
+<div style="display:flex; align-items:baseline; gap:16px; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:14px;">02</span>
+<h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.02em;"><span data-i18n="services.title">خدماتي</span></h2>
+</div>
+<p style="margin:0 0 50px; color:#8a857c; font-size:16px; max-width:540px;"><span data-i18n="services.subtitle">مواقع وواجهات مبنية بعناية، من الصفر للنشر.</span></p>
+<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:clamp(14px,1.8vw,22px);">
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">01</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc1.title">بناء مواقع متعددة اللغات</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc1.desc">مواقع كاملة بالعربية والإنجليزية (وأي لغة تحتاجها)، بتصميم متجاوب على كل الأجهزة.</span></p>
+</div>
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">02</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc2.title">أنظمة تسجيل دخول وعضوية</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc2.desc">مصادقة آمنة عبر Google OAuth، مع صفحات إعدادات حساب وملفات شخصية.</span></p>
+</div>
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">03</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc3.title">ميزات تفاعلية مخصصة</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc3.desc">بحث وفلترة، بيانات لحظية، لوحات تحكم — أي ميزة تحتاج منطق حقيقي خلفها.</span></p>
+</div>
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">04</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc4.title">تحسين محركات البحث (SEO)</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc4.desc">فحص شامل للموقع: meta tags، خرائط الموقع، وبيانات Open Graph.</span></p>
+</div>
+</div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
+<div style="display:flex; align-items:baseline; gap:16px; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:14px;">03</span>
+<h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.02em;"><span data-i18n="work.title">أعمالي</span></h2>
+</div>
+<p style="margin:0 0 44px; color:#8a857c; font-size:16px; max-width:520px;"><span data-i18n="work.subtitle">مشاريع حقيقية شغالة على الإنترنت الآن.</span></p>
+<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr)); gap:clamp(18px,2.2vw,28px);">
+<article class="work-card" style="display:flex; flex-direction:column; background:#13110e; border:1px solid rgba(255,255,255,0.08);">
+<div style="position:relative; aspect-ratio:16/9; background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.04) 0 12px,transparent 12px 24px); background-color:#1a1815; overflow:hidden;">
+<img src="assets/production-studio.png" alt="ahmedshawqi.store" style="width:100%; height:100%; object-fit:cover;">
+<span style="position:absolute; top:13px; right:13px; padding:5px 11px; background:rgba(10,10,9,0.78); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px;"><span data-i18n="work1.tag">موقع حي</span></span>
+</div>
+<div style="padding:22px 22px 24px; display:flex; flex-direction:column; flex:1;">
+<h3 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:21px; color:#f4f1ea;">ahmedshawqi.store</h3>
+<p style="margin:0 0 20px; font-size:14.5px; line-height:1.65; color:#9a948a; flex:1;"><span data-i18n="work1.desc">موقع كامل بـ3 لغات، مصادقة Google OAuth، مركز مباريات تفاعلي، وأرشيف وثائقيات قابل للفلترة — أكثر من 10 صفحات متكاملة.</span></p>
+<a href="sports.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); text-decoration:none; font-size:14px; font-weight:600;"><span data-i18n="work.cta">شوف المشروع</span> <span style="font-family:'IBM Plex Mono',monospace;">←</span></a>
+</div>
+</article>
+<article class="work-card" style="display:flex; flex-direction:column; background:#13110e; border:1px solid rgba(255,255,255,0.08);">
+<div style="position:relative; aspect-ratio:16/9; background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.04) 0 12px,transparent 12px 24px); background-color:#1a1815; overflow:hidden;">
+<img src="assets/mada-law-poster.png" alt="مركز المباريات" style="width:100%; height:100%; object-fit:cover;">
+<span style="position:absolute; top:13px; right:13px; padding:5px 11px; background:rgba(10,10,9,0.78); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px;"><span data-i18n="work2.tag">ميزة تفاعلية</span></span>
+</div>
+<div style="padding:22px 22px 24px; display:flex; flex-direction:column; flex:1;">
+<h3 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:21px; color:#f4f1ea;"><span data-i18n="work2.title">مركز المباريات</span></h3>
+<p style="margin:0 0 20px; font-size:14.5px; line-height:1.65; color:#9a948a; flex:1;"><span data-i18n="work2.desc">ترتيب دوريات متعددة، مؤشرات لحظية، وبحث عن لاعبين — بيانات حية ومحدثة.</span></p>
+<a href="مركز-المباريات.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); text-decoration:none; font-size:14px; font-weight:600;"><span data-i18n="work.cta">شوف المشروع</span> <span style="font-family:'IBM Plex Mono',monospace;">←</span></a>
+</div>
+</article>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); background:#0c0b09; border-top:1px solid rgba(255,255,255,0.06);">
+<div style="display:flex; align-items:baseline; gap:16px; margin-bottom:50px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:14px;">04</span>
+<h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.02em;"><span data-i18n="experience.title">مسيرتي</span></h2>
+</div>
+<div style="max-width:800px; position:relative; padding-right:48px;">
+<div aria-hidden="true" style="position:absolute; top:6px; right:13px; bottom:0; width:1px; background:linear-gradient(180deg,var(--accent) 0%,rgba(203,162,90,0.15) 100%);"></div>
+<div style="position:relative; display:flex; flex-direction:column; gap:12px; padding-bottom:48px;">
+<div aria-hidden="true" style="position:absolute; top:4px; right:-43px; width:20px; height:20px; border-radius:50%; background:#100f0d; border:2px solid var(--accent);"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:#100f0d; background:var(--accent); padding:4px 12px; border-radius:20px; font-weight:500; align-self:flex-start;">JUN 2026</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:clamp(18px,2.2vw,22px); color:#f4f1ea;"><span data-i18n="exp1.title">إطلاق ahmedshawqi.store</span></h3>
+<p style="margin:0; font-size:15px; line-height:1.75; color:#9a948a; font-weight:300; max-width:600px;"><span data-i18n="exp1.desc">تصميم وبناء ونشر موقع كامل بـ3 لغات، بمصادقة حقيقية وميزات تفاعلية، من الصفر.</span></p>
+</div>
+<div style="position:relative; display:flex; flex-direction:column; gap:12px; padding-bottom:48px;">
+<div aria-hidden="true" style="position:absolute; top:4px; right:-43px; width:20px; height:20px; border-radius:50%; background:#100f0d; border:2px solid var(--accent);"></div>
+<span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:#100f0d; background:var(--accent); padding:4px 12px; border-radius:20px; font-weight:500; align-self:flex-start;">JUL 2026</span>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:clamp(18px,2.2vw,22px); color:#f4f1ea;"><span data-i18n="exp2.title">تحسينات SEO وأداء</span></h3>
+<p style="margin:0; font-size:15px; line-height:1.75; color:#9a948a; font-weight:300; max-width:600px;"><span data-i18n="exp2.desc">فحص شامل وتحسين للموقع، تصحيح أخطاء عبر الأجهزة، وتحسين سرعة التحميل.</span></p>
+</div>
+</div>
+</section>
+
+<!-- WHY WORK WITH ME -->
+<section id="testimonials" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
+<div style="display:flex; align-items:baseline; gap:16px; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:14px;">05</span>
+<h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.02em;"><span data-i18n="why.title">ليش تشتغل معي</span></h2>
+</div>
+<p style="margin:0 0 50px; color:#8a857c; font-size:16px; max-width:540px;"><span data-i18n="why.subtitle">مو مجرد كود — تجربة كاملة من الفكرة للنشر.</span></p>
+<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr)); gap:clamp(14px,1.8vw,22px);">
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="why1.title">مشروع حي، لا نظري</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="why1.desc">كل ميزة بأعرضها عليك جربتها فعلياً على موقع شغال.</span></p>
+</div>
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="why2.title">تواصل مباشر وسريع</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="why2.desc">بترد بسرعة وبشتغل لحالي من البداية للنهاية بدون وسطاء.</span></p>
+</div>
+<div class="svc-card" style="background:#13110e; border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:28px 26px 26px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+<div aria-hidden="true" style="position:absolute; top:0; right:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent),rgba(203,162,90,0.2));"></div>
+<h3 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="why3.title">ثنائي اللغة</span></h3>
+<p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="why3.desc">بشتغل بالعربي والإنجليزي، بأتواصل معك باللغة يلي تريحك.</span></p>
+</div>
+</div>
+</section>
+
+<!-- RATING WIDGET -->
+<section id="rating" style="position:relative; z-index:2; padding:clamp(48px,7vh,80px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
+<div style="max-width:480px; margin:0 auto;">
+<p style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:13px; letter-spacing:.16em; margin:0 0 14px;"><span data-i18n="rating.tag">★ — تقييم</span></p>
+<h2 style="margin:0 0 8px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; font-size:clamp(24px,3.5vw,36px); color:#f4f1ea;"><span data-i18n="rating.title">قيّم تجربتك بالموقع</span></h2>
+<p style="margin:0 0 24px; color:#a89c8a; font-size:.9rem;"><span data-i18n="rating.subtitle">رأيك بيساعدني أطوّر أكتر</span></p>
+<div id="rwAverage" style="display:none; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;">
+<span id="rwAvgNum" style="color:#c9a24d; font-size:1.8rem; font-weight:900; font-family:'IBM Plex Mono',monospace;">0.0</span>
+<div style="text-align:right;"><span style="color:#6b6155; font-size:.9rem;"><span data-i18n="rating.of5">من 5</span></span><span id="rwCount" style="color:#a89c8a; font-size:.75rem; display:block; margin-top:2px;"></span></div>
+</div>
+<div id="rwStars" style="display:flex; justify-content:center; gap:8px; direction:ltr; margin-bottom:14px; font-size:2rem;">
+<span class="rw-star" data-value="1">★</span><span class="rw-star" data-value="2">★</span><span class="rw-star" data-value="3">★</span><span class="rw-star" data-value="4">★</span><span class="rw-star" data-value="5">★</span>
+</div>
+<div id="rwThanks" style="color:#3fae6a; font-size:.85rem; display:none;"><span data-i18n="rating.thanks">شكرًا لتقييمك! ⭐</span></div>
+<div id="rwError" style="color:#c85b4a; font-size:.8rem; display:none; margin-top:8px;"><span data-i18n="rating.error">تعذّر إرسال تقييمك، حاول لاحقًا.</span></div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="position:relative; z-index:2; padding:clamp(80px,13vh,150px) clamp(20px,5vw,72px); background:linear-gradient(160deg,#0c0b09 60%,#16120a); border-top:1px solid rgba(203,162,90,0.22); overflow:hidden;">
+<div style="max-width:960px; position:relative; z-index:1;">
+<span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:13px; letter-spacing:.16em;"><span data-i18n="contact.tag">06 — تواصل</span></span>
+<h2 style="margin:16px 0 20px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; font-size:clamp(34px,5.5vw,68px); line-height:1.05; letter-spacing:-0.02em;"><span data-i18n="contact.title1">لنشتغل</span><br><span style="color:var(--accent);"><span data-i18n="contact.title2">سوا</span></span></h2>
+<p style="margin:0 0 40px; font-size:clamp(16px,1.9vw,20px); line-height:1.7; color:#b8b2a8; max-width:580px; font-weight:300;"><span data-i18n="contact.subtitle">عندك فكرة موقع أو مشروع؟ احكيلي عنه.</span></p>
+<div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:56px;">
+<a href="mailto:hanood.2004a@gmail.com" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:var(--accent); color:#100f0d; text-decoration:none; font-weight:700; font-size:15px; border-radius:3px;"><span data-i18n="contact.email">راسلني إيميل</span></a>
+<a href="https://wa.me/970592608998" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:#1fa84a; color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:3px;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.5l5.83-1.447A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.36-.214-3.713.922.952-3.617-.234-.372A9.784 9.784 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+<span data-i18n="contact.whatsapp">واتساب</span>
+</a>
+<a href="https://www.linkedin.com/in/ahmedshawqi-store" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:#0a66c2; color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:3px;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.598 0 4.268 2.368 4.268 5.452v6.289zM5.337 7.433a2.062 2.062 0 11.001-4.124 2.062 2.062 0 010 4.124zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
+<span data-i18n="contact.linkedin">لينكدإن</span>
+</a>
+<a href="https://www.youtube.com/@ahme_sh7" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border:1px solid rgba(244,241,234,0.2); color:#f4f1ea; text-decoration:none; font-weight:500; font-size:15px; border-radius:3px;"><span data-i18n="contact.youtube">يوتيوب</span></a>
+<a href="https://www.instagram.com/ahmed._sh7/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border:1px solid rgba(244,241,234,0.2); color:#f4f1ea; text-decoration:none; font-weight:500; font-size:15px; border-radius:3px;"><span data-i18n="contact.instagram">إنستغرام</span></a>
+</div>
+
+<!-- CONTACT FORM -->
+<div id="contact-form" style="border-top:1px solid rgba(203,162,90,0.18); padding-top:40px; margin-bottom:40px; max-width:640px;">
+<form id="ahmedContactForm" autocomplete="on">
+<div class="cf-field"><label for="cf-name"><span data-i18n="form.name">الاسم</span></label><input type="text" id="cf-name" name="name" required placeholder="اسمك الكامل" data-i18n-ph="form.name.ph"></div>
+<div class="cf-field"><label for="cf-email"><span data-i18n="form.email">الإيميل</span></label><input type="email" id="cf-email" name="email" required placeholder="example@email.com"></div>
+<div class="cf-field">
+<label for="cf-service"><span data-i18n="form.service">نوع الخدمة</span></label>
+<select id="cf-service" name="service" required>
+<option value="" data-i18n="form.service.select">اختر نوع الخدمة</option>
+<option value="موقع متعدد اللغات" data-i18n="form.service.opt1">بناء موقع متعدد اللغات</option>
+<option value="نظام تسجيل دخول" data-i18n="form.service.opt2">نظام تسجيل دخول وعضوية</option>
+<option value="ميزة تفاعلية" data-i18n="form.service.opt3">ميزة تفاعلية مخصصة</option>
+<option value="SEO" data-i18n="form.service.opt4">تحسين محركات البحث</option>
+<option value="أخرى" data-i18n="form.service.opt5">شي تاني</option>
+</select>
+</div>
+<div class="cf-field"><label for="cf-message"><span data-i18n="form.message">الرسالة</span></label><textarea id="cf-message" name="message" required placeholder="احكيلي عن مشروعك..." data-i18n-ph="form.message.ph"></textarea></div>
+<button type="submit" class="cf-submit" id="cfSubmitBtn"><span data-i18n="form.submit">إرسال</span></button>
+<div class="cf-status" id="cfStatus"></div>
+</form>
+</div>
+
+<div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:36px;">
+<p style="margin:0 0 22px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6f6a61; letter-spacing:.12em;"><span data-i18n="direct.label">تواصل مباشر</span></p>
+<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px;">
+<a href="mailto:hanood.2004a@gmail.com" style="display:flex; flex-direction:column; gap:6px; padding:20px 22px; background:#13110e; border:1px solid rgba(255,255,255,0.07); border-radius:4px; text-decoration:none;">
+<span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:.14em;">EMAIL</span>
+<span dir="ltr" style="color:#f4f1ea; font-size:15px; font-weight:500;">hanood.2004a@gmail.com</span>
+</a>
+<a href="https://wa.me/970592608998" target="_blank" rel="noopener" style="display:flex; flex-direction:column; gap:6px; padding:20px 22px; background:#13110e; border:1px solid rgba(255,255,255,0.07); border-radius:4px; text-decoration:none;">
+<span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:.14em;">WHATSAPP</span>
+<span dir="ltr" style="color:#f4f1ea; font-size:15px; font-weight:500;">+970 59 260 8998</span>
+</a>
+<a href="https://www.linkedin.com/in/ahmedshawqi-store" target="_blank" rel="noopener" style="display:flex; flex-direction:column; gap:6px; padding:20px 22px; background:#13110e; border:1px solid rgba(255,255,255,0.07); border-radius:4px; text-decoration:none;">
+<span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:.14em;">LINKEDIN</span>
+<span dir="ltr" style="color:#f4f1ea; font-size:15px; font-weight:500;">ahmedshawqi-store</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="position:relative; z-index:2; background:#0a0a09; border-top:1px solid rgba(203,162,90,0.22);">
+<div style="padding:clamp(26px,4vh,42px) clamp(20px,5vw,72px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px;">
+<div style="display:flex; align-items:center; gap:12px;">
+<img src="assets/logo.jpg" alt="أحمد شوقي" style="width:36px; height:36px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.4);">
+<div>
+<div style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:15px; color:#f4f1ea;">أحمد شوقي</div>
+<div style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(203,162,90,0.5); letter-spacing:.14em; margin-top:3px;">FRONTEND DEVELOPER</div>
+</div>
+</div>
+<nav style="display:flex; gap:clamp(12px,2vw,26px); flex-wrap:wrap;">
+<a href="#about" style="color:#b8b2a8; text-decoration:none; font-size:13px;"><span data-i18n="footer.about">مين أحمد</span></a>
+<a href="#services" style="color:#b8b2a8; text-decoration:none; font-size:13px;"><span data-i18n="footer.services">خدماتي</span></a>
+<a href="#work" style="color:#b8b2a8; text-decoration:none; font-size:13px;"><span data-i18n="footer.work">أعمالي</span></a>
+<a href="sports.html" style="color:#b8b2a8; text-decoration:none; font-size:13px;"><span data-i18n="footer.content">صناعة المحتوى</span></a>
+<a href="#contact-form" style="color:#b8b2a8; text-decoration:none; font-size:13px;"><span data-i18n="footer.contact">تواصل</span></a>
+</nav>
+<div style="display:flex; gap:16px;">
+<a href="https://www.youtube.com/@ahme_sh7" target="_blank" rel="noopener" style="color:#8a857c; text-decoration:none; font-size:13px;">يوتيوب</a>
+<a href="https://www.instagram.com/ahmed._sh7/" target="_blank" rel="noopener" style="color:#8a857c; text-decoration:none; font-size:13px;">إنستغرام</a>
+<a href="https://www.linkedin.com/in/ahmedshawqi-store" target="_blank" rel="noopener" style="color:#8a857c; text-decoration:none; font-size:13px;">لينكدإن</a>
+</div>
+</div>
+<div style="text-align:center; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.05); font-size:12px; color:#5a564e;"><span data-i18n="footer.copyright">© 2026 أحمد شوقي. جميع الحقوق محفوظة.</span></div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var translations = {
+    en: {
+      "nav.content":"Content", "nav.archive":"Archive", "nav.work":"My Work", "nav.services":"Services", "nav.contact":"Contact Me",
+      "hero.badge":"I build websites that actually work",
+      "hero.p":"A frontend developer with real, documented experience — from a live multilingual website to full authentication systems and interactive features.",
+      "hero.cta1":"See My Work", "hero.cta2":"Book a Consultation",
+      "about.title":"Who is Ahmed Shawqi?",
+      "about.p1":"A frontend developer from Gaza who built ahmedshawqi.store entirely from scratch — a live site in 3 languages, with real authentication and interactive features.",
+      "about.p2":"I work solo from idea to launch: design, build, test, and deploy on Cloudflare Pages. I care about clean code and interfaces that actually make life easier for the user.",
+      "about.quote":"Code has to work right, and design has to get the message across — without complicating anyone's life.",
+      "services.title":"Services", "services.subtitle":"Websites and interfaces built with care, from scratch to launch.",
+      "svc1.title":"Multilingual Website Development",
+      "svc1.desc":"Complete websites in Arabic and English (or any language you need), with responsive design across all devices.",
+      "svc2.title":"Login & Membership Systems",
+      "svc2.desc":"Secure authentication via Google OAuth, with account settings pages and user profiles.",
+      "svc3.title":"Custom Interactive Features",
+      "svc3.desc":"Search and filtering, real-time data, dashboards — any feature that needs real logic behind it.",
+      "svc4.title":"Search Engine Optimization (SEO)",
+      "svc4.desc":"Full-site audit: meta tags, sitemaps, and Open Graph data.",
+      "work.title":"My Work", "work.subtitle":"Real projects live on the internet right now.",
+      "work1.tag":"Live Site",
+      "work1.desc":"A full site in 3 languages, Google OAuth authentication, an interactive match center, and a filterable documentary archive — 10+ integrated pages.",
+      "work.cta":"View Project",
+      "work2.tag":"Interactive Feature", "work2.title":"Match Center",
+      "work2.desc":"Multi-league standings, live indicators, and player search — live, up-to-date data.",
+      "experience.title":"My Journey",
+      "exp1.title":"Launching ahmedshawqi.store",
+      "exp1.desc":"Designed, built, and launched a complete site in 3 languages, with real authentication and interactive features, from scratch.",
+      "exp2.title":"SEO & Performance Improvements",
+      "exp2.desc":"Full-site audit and optimization, cross-device debugging, and faster load times.",
+      "why.title":"Why Work With Me", "why.subtitle":"Not just code — a complete experience from idea to launch.",
+      "why1.title":"A Live Project, Not Theory",
+      "why1.desc":"Every feature I show you, I've actually tested on a live site.",
+      "why2.title":"Direct & Fast Communication",
+      "why2.desc":"I respond quickly and work solo from start to finish, no middlemen.",
+      "why3.title":"Bilingual",
+      "why3.desc":"I work in Arabic and English, and I'll communicate with you in whichever language you prefer.",
+      "rating.tag":"★ — Rating", "rating.title":"Rate Your Experience",
+      "rating.subtitle":"Your feedback helps me improve", "rating.of5":"out of 5",
+      "rating.thanks":"Thanks for your rating! ⭐", "rating.error":"Couldn't submit your rating, try again later.",
+      "contact.tag":"06 — Contact", "contact.title1":"Let's Work", "contact.title2":"Together",
+      "contact.subtitle":"Have a website or project idea? Tell me about it.",
+      "contact.email":"Email Me", "contact.whatsapp":"WhatsApp", "contact.linkedin":"LinkedIn",
+      "contact.youtube":"YouTube", "contact.instagram":"Instagram",
+      "form.name":"Name", "form.name.ph":"Your full name", "form.email":"Email",
+      "form.service":"Service Type", "form.service.select":"Select a service",
+      "form.service.opt1":"Multilingual website", "form.service.opt2":"Login & membership system",
+      "form.service.opt3":"Custom interactive feature", "form.service.opt4":"SEO",
+      "form.service.opt5":"Something else", "form.message":"Message",
+      "form.message.ph":"Tell me about your project...", "form.submit":"Send",
+      "direct.label":"Direct Contact",
+      "footer.about":"About", "footer.services":"Services", "footer.work":"Work",
+      "footer.content":"Content", "footer.contact":"Contact",
+      "footer.copyright":"© 2026 Ahmed Shawqi. All rights reserved."
+    },
+    es: {
+      "nav.content":"Contenido", "nav.archive":"Archivo", "nav.work":"Mi trabajo", "nav.services":"Servicios", "nav.contact":"Contáctame",
+      "hero.badge":"Construyo sitios web que realmente funcionan",
+      "hero.p":"Desarrollador frontend con experiencia real y documentada — desde un sitio web multilingüe en vivo hasta sistemas de autenticación completos y funciones interactivas.",
+      "hero.cta1":"Ver mi trabajo", "hero.cta2":"Reservar una consulta",
+      "about.title":"¿Quién es Ahmed Shawqi?",
+      "about.p1":"Desarrollador frontend de Gaza que construyó ahmedshawqi.store completamente desde cero — un sitio en vivo en 3 idiomas, con autenticación real y funciones interactivas.",
+      "about.p2":"Trabajo solo desde la idea hasta el lanzamiento: diseño, construcción, pruebas y despliegue en Cloudflare Pages. Me importa el código limpio y las interfaces que realmente facilitan la vida del usuario.",
+      "about.quote":"El código tiene que funcionar bien, y el diseño tiene que transmitir el mensaje — sin complicarle la vida a nadie.",
+      "services.title":"Servicios", "services.subtitle":"Sitios web e interfaces construidos con cuidado, desde cero hasta el lanzamiento.",
+      "svc1.title":"Desarrollo de sitios web multilingües",
+      "svc1.desc":"Sitios web completos en árabe e inglés (o cualquier idioma que necesites), con diseño responsivo en todos los dispositivos.",
+      "svc2.title":"Sistemas de inicio de sesión y membresía",
+      "svc2.desc":"Autenticación segura mediante Google OAuth, con páginas de configuración de cuenta y perfiles de usuario.",
+      "svc3.title":"Funciones interactivas personalizadas",
+      "svc3.desc":"Búsqueda y filtrado, datos en tiempo real, paneles de control — cualquier función que necesite lógica real detrás.",
+      "svc4.title":"Optimización para motores de búsqueda (SEO)",
+      "svc4.desc":"Auditoría completa del sitio: meta tags, mapas del sitio y datos de Open Graph.",
+      "work.title":"Mi trabajo", "work.subtitle":"Proyectos reales en línea ahora mismo.",
+      "work1.tag":"Sitio en vivo",
+      "work1.desc":"Un sitio completo en 3 idiomas, autenticación con Google OAuth, un centro de partidos interactivo y un archivo documental filtrable — más de 10 páginas integradas.",
+      "work.cta":"Ver proyecto",
+      "work2.tag":"Función interactiva", "work2.title":"Centro de partidos",
+      "work2.desc":"Clasificaciones de múltiples ligas, indicadores en vivo y búsqueda de jugadores — datos en vivo y actualizados.",
+      "experience.title":"Mi trayectoria",
+      "exp1.title":"Lanzamiento de ahmedshawqi.store",
+      "exp1.desc":"Diseñé, construí y lancé un sitio completo en 3 idiomas, con autenticación real y funciones interactivas, desde cero.",
+      "exp2.title":"Mejoras de SEO y rendimiento",
+      "exp2.desc":"Auditoría y optimización completa del sitio, depuración entre dispositivos y tiempos de carga más rápidos.",
+      "why.title":"Por qué trabajar conmigo", "why.subtitle":"No es solo código — una experiencia completa desde la idea hasta el lanzamiento.",
+      "why1.title":"Un proyecto en vivo, no teoría",
+      "why1.desc":"Cada función que te muestro, la he probado realmente en un sitio en vivo.",
+      "why2.title":"Comunicación directa y rápida",
+      "why2.desc":"Respondo rápido y trabajo solo de principio a fin, sin intermediarios.",
+      "why3.title":"Bilingüe",
+      "why3.desc":"Trabajo en árabe e inglés, y me comunicaré contigo en el idioma que prefieras.",
+      "rating.tag":"★ — Calificación", "rating.title":"Califica tu experiencia",
+      "rating.subtitle":"Tu opinión me ayuda a mejorar", "rating.of5":"de 5",
+      "rating.thanks":"¡Gracias por tu calificación! ⭐", "rating.error":"No se pudo enviar tu calificación, inténtalo más tarde.",
+      "contact.tag":"06 — Contacto", "contact.title1":"Trabajemos", "contact.title2":"Juntos",
+      "contact.subtitle":"¿Tienes una idea de sitio web o proyecto? Cuéntame sobre ella.",
+      "contact.email":"Envíame un correo", "contact.whatsapp":"WhatsApp", "contact.linkedin":"LinkedIn",
+      "contact.youtube":"YouTube", "contact.instagram":"Instagram",
+      "form.name":"Nombre", "form.name.ph":"Tu nombre completo", "form.email":"Correo electrónico",
+      "form.service":"Tipo de servicio", "form.service.select":"Selecciona un servicio",
+      "form.service.opt1":"Sitio web multilingüe", "form.service.opt2":"Sistema de inicio de sesión",
+      "form.service.opt3":"Función interactiva personalizada", "form.service.opt4":"SEO",
+      "form.service.opt5":"Otra cosa", "form.message":"Mensaje",
+      "form.message.ph":"Cuéntame sobre tu proyecto...", "form.submit":"Enviar",
+      "direct.label":"Contacto directo",
+      "footer.about":"Acerca de", "footer.services":"Servicios", "footer.work":"Trabajo",
+      "footer.content":"Contenido", "footer.contact":"Contacto",
+      "footer.copyright":"© 2026 Ahmed Shawqi. Todos los derechos reservados."
+    }
+  };
+
+  var originalAr = {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ originalAr[el.getAttribute('data-i18n')] = el.textContent; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ el.setAttribute('data-ph-ar', el.getAttribute('placeholder')); });
+
+  function setLang(lang){
+    var html = document.documentElement;
+    if(lang === 'ar'){
+      html.setAttribute('lang','ar'); html.setAttribute('dir','rtl');
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key = el.getAttribute('data-i18n');
+        if(originalAr[key] !== undefined) el.textContent = originalAr[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ el.setAttribute('placeholder', el.getAttribute('data-ph-ar')); });
+    } else {
+      html.setAttribute('lang', lang); html.setAttribute('dir','ltr');
+      var dict = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+        var key = el.getAttribute('data-i18n-ph');
+        if(dict[key]) el.setAttribute('placeholder', dict[key]);
+      });
+    }
+    document.querySelectorAll('#langSwitcher button').forEach(function(btn){
+      var active = btn.getAttribute('data-lang') === lang;
+      btn.style.borderColor = active ? '#cba35a' : 'rgba(255,255,255,.15)';
+      btn.style.color = active ? '#cba35a' : '#8a857c';
+    });
+    try{ localStorage.setItem('site-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('#langSwitcher button').forEach(function(btn){
+    btn.addEventListener('click', function(){ setLang(btn.getAttribute('data-lang')); });
+  });
+
+  var saved = 'ar';
+  try{ saved = localStorage.getItem('site-lang') || 'ar'; }catch(e){}
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
