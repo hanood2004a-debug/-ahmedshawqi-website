@@ -6,7 +6,7 @@
 <title>الأعمال البرمجية | أحمد شوقي - Full-Stack Developer</title>
 <meta name="description" content="معرض أعمال أحمد شوقي — مشاريع برمجة الويب (Laravel)، تطبيقات متكاملة وحلول الشركات البرمجية.">
 <link rel="canonical" href="https://ahmedshawqi.store/works.html">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icon-32.png" type="image/png" sizes="32x32">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,20 +14,18 @@
   html { scroll-behavior: smooth; }
   body { margin:0; background:#100f0d; color:#f4f1ea; font-family:'Tajawal',sans-serif; -webkit-font-smoothing:antialiased; }
   ::selection { background:#cba35a; color:#100f0d; }
-  .work-card { transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
-  .work-card:hover { transform:translateY(-6px); border-color:rgba(203,162,90,.55); box-shadow:0 0 0 1px rgba(203,162,90,.4), 0 18px 46px rgba(0,0,0,.55); }
+  .work-card { transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; }
+  .work-card:hover { transform:translateY(-6px); border-color:rgba(203,162,90,.6); box-shadow:0 0 0 1px rgba(203,162,90,.4), 0 18px 46px rgba(0,0,0,.6); }
   .nav-link { color:#b8b2a8; text-decoration:none; font-size:14px; transition:color .2s; }
   .nav-link:hover { color:#f4f1ea; }
   .grid-works { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:26px; }
-  @media (max-width:520px){ .grid-works{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 
-<nav style="position:fixed; top:0; right:0; left:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,72px); background:linear-gradient(180deg,rgba(16,15,13,0.94),rgba(16,15,13,0)); backdrop-filter:blur(2px);">
+<nav style="position:fixed; top:0; right:0; left:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,72px); background:linear-gradient(180deg,rgba(16,15,13,0.95),rgba(16,15,13,0)); backdrop-filter:blur(4px);">
   <a href="index.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#f4f1ea;">
-    <img src="assets/logo.jpg" alt="Ahmed Shawqi" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.4);">
-    <span style="font-weight:700; font-size:17px;">أحمد شوقي</span>
+    <span style="font-weight:700; font-size:17px; color:#cba35a;">أحمد شوقي</span>
   </a>
   <div style="display:flex; align-items:center; gap:24px;">
     <a href="works.html" class="nav-link" style="color:#cba35a;">الأعمال</a>
@@ -37,7 +35,7 @@
   </div>
 </nav>
 
-<header style="position:relative; padding:150px clamp(20px,5vw,72px) 60px; overflow:hidden;">
+<header style="position:relative; padding:150px clamp(20px,5vw,72px) 60px; background:#13110e; border-bottom:1px solid rgba(203,162,90,0.15);">
   <div style="max-width:900px;">
     <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#cba35a; letter-spacing:.18em;">PORTFOLIO & WEB APPS</span>
     <h1 style="margin:16px 0 0; font-weight:900; font-size:clamp(42px,7vw,86px); color:#cba35a;">أعمالي البرمجية</h1>
@@ -45,7 +43,7 @@
   </div>
 </header>
 
-<main style="padding:20px clamp(20px,5vw,72px) 100px;">
+<main style="padding:40px clamp(20px,5vw,72px) 100px;">
   <div style="margin-bottom: 35px; display:flex; align-items:center; gap:14px;">
     <h2 style="font-size:26px; color:#cba35a; margin:0;">المشاريع وتطبيقات الويب</h2>
     <span style="flex-grow:1; height:1px; background:rgba(203,162,90,.2);"></span>
@@ -54,62 +52,67 @@
   <div class="grid-works">
 
     <!-- 1. منصة ليالي -->
-    <a class="work-card" href="https://github.com/hanood2004a-debug/layali-laravel-app" target="_blank" rel="noopener" style="text-decoration:none; display:block; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:2px; overflow:hidden;">
-      <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/production-studio.png" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <a class="work-card" href="https://github.com/hanood2004a-debug/layali-laravel-app" target="_blank" rel="noopener">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(135deg, #1a1612, #0d0c0a); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(203,162,90,0.2);">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:24px; color:#cba35a; font-weight:bold;">[ LAYALI APP ]</span>
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Laravel</span>
       </div>
-      <div style="padding:20px;">
+      <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
         <h3 style="margin:0 0 10px; font-weight:700; font-size:18px; color:#f4f1ea;">منصة ليالي | تطبيق ويب متكامل لإدارة الأعمال</h3>
-        <span style="color:#cba35a; font-size:13px; font-weight:600;">عرض الكود المصدري على GitHub ←</span>
+        <p style="margin:0 0 16px; font-size:14px; color:#9a948a; line-height:1.6;">نظام متكامل لإدارة العمليات والبيانات باستخدام إطارات عمل لارافيل الحديثة.</p>
+        <span style="color:#cba35a; font-size:13px; font-weight:600; margin-top:auto;">عرض الكود المصدري على GitHub ←</span>
       </div>
     </a>
 
     <!-- 2. شركة بصمة -->
-    <a class="work-card" href="#" target="_blank" rel="noopener" style="text-decoration:none; display:block; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:2px; overflow:hidden;">
-      <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/digital-marketing.png" alt="شركة بصمة الرقمية" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <a class="work-card" href="#" target="_blank" rel="noopener">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(135deg, #1a1612, #0d0c0a); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(203,162,90,0.2);">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:24px; color:#cba35a; font-weight:bold;">[ BASMA AGENCY ]</span>
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Agency Website</span>
       </div>
-      <div style="padding:20px;">
+      <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
         <h3 style="margin:0 0 10px; font-weight:700; font-size:18px; color:#f4f1ea;">موقع شركة بصمة الرقمية | الوجهة الرسمية للوكالة</h3>
-        <span style="color:#cba35a; font-size:13px; font-weight:600;">استعراض المشروع ←</span>
+        <p style="margin:0 0 16px; font-size:14px; color:#9a948a; line-height:1.6;">الواجهة الرسمية للوكالة لعرض الخدمات الرقمية، التصاميم، وإدارة الحملات.</p>
+        <span style="color:#cba35a; font-size:13px; font-weight:600; margin-top:auto;">استعراض المشروع ←</span>
       </div>
     </a>
 
     <!-- 3. موقع بنيان -->
-    <a class="work-card" href="#" target="_blank" rel="noopener" style="text-decoration:none; display:block; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:2px; overflow:hidden;">
-      <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/ahmed-portrait.jpeg" alt="موقع بنيان" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+    <a class="work-card" href="#" target="_blank" rel="noopener">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(135deg, #1a1612, #0d0c0a); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(203,162,90,0.2);">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:24px; color:#cba35a; font-weight:bold;">[ BUNYAN PLATFORM ]</span>
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Web App</span>
       </div>
-      <div style="padding:20px;">
+      <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
         <h3 style="margin:0 0 10px; font-weight:700; font-size:18px; color:#f4f1ea;">منصة بنيان | موقع ويب تعريفي وإداري متكامل</h3>
-        <span style="color:#cba35a; font-size:13px; font-weight:600;">استعراض المشروع ←</span>
+        <p style="margin:0 0 16px; font-size:14px; color:#9a948a; line-height:1.6;">منصة رقمية متكاملة لتقديم حلول الويب الاحترافية وأنظمة الإدارة.</p>
+        <span style="color:#cba35a; font-size:13px; font-weight:600; margin-top:auto;">استعراض المشروع ←</span>
       </div>
     </a>
 
     <!-- 4. جمعية البر -->
-    <a class="work-card" href="#" target="_blank" rel="noopener" style="text-decoration:none; display:block; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:2px; overflow:hidden;">
-      <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/digital-marketing.png" alt="جمعية البر" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <a class="work-card" href="#" target="_blank" rel="noopener">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(135deg, #1a1612, #0d0c0a); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(203,162,90,0.2);">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:24px; color:#cba35a; font-weight:bold;">[ AL-BIR ASSOCIATION ]</span>
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Non-Profit</span>
       </div>
-      <div style="padding:20px;">
+      <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
         <h3 style="margin:0 0 10px; font-weight:700; font-size:18px; color:#f4f1ea;">موقع جمعية البر | المنصة الرقمية الرسمية للجمعية</h3>
-        <span style="color:#cba35a; font-size:13px; font-weight:600;">استعراض المشروع ←</span>
+        <p style="margin:0 0 16px; font-size:14px; color:#9a948a; line-height:1.6;">موقع تعريفي خيري يسهل الوصول للمبادرات وحملات الدعم الإنساني.</p>
+        <span style="color:#cba35a; font-size:13px; font-weight:600; margin-top:auto;">استعراض المشروع ←</span>
       </div>
     </a>
 
     <!-- 5. موقع العيادة -->
-    <a class="work-card" href="#" target="_blank" rel="noopener" style="text-decoration:none; display:block; background:#151210; border:1px solid rgba(203,162,90,.22); border-radius:2px; overflow:hidden;">
-      <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/production-studio.png" alt="موقع العيادة" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <a class="work-card" href="#" target="_blank" rel="noopener">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(135deg, #1a1612, #0d0c0a); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(203,162,90,0.2);">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:24px; color:#cba35a; font-weight:bold;">[ CLINIC SYSTEM ]</span>
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Medical</span>
       </div>
-      <div style="padding:20px;">
+      <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
         <h3 style="margin:0 0 10px; font-weight:700; font-size:18px; color:#f4f1ea;">موقع العيادة | منصة حجوزات وإدارة طبية متكاملة</h3>
-        <span style="color:#cba35a; font-size:13px; font-weight:600;">استعراض المشروع ←</span>
+        <p style="margin:0 0 16px; font-size:14px; color:#9a948a; line-height:1.6;">نظام حجز مواعيد إلكتروني وإدارة ملفات المرضى بسلاسة تامة.</p>
+        <span style="color:#cba35a; font-size:13px; font-weight:600; margin-top:auto;">استعراض المشروع ←</span>
       </div>
     </a>
 
