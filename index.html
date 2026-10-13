@@ -43,7 +43,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 .terminal-cursor { display: inline-block; width: 8px; height: 16px; background: #cba35a; animation: cursorBlink 0.8s infinite; vertical-align: middle; margin-right: 4px; }
 @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* لمسات جمالية ومبدعة: إطار ذهبي متوهج فاخر */
+/* إطار ذهبي متوهج فاخر */
 @keyframes goldGlow {
   0%, 100% { box-shadow: 0 0 20px rgba(203,162,90,0.18), inset 0 0 15px rgba(203,162,90,0.06); border-color: rgba(203,162,90,0.35); }
   50% { box-shadow: 0 0 35px rgba(203,162,90,0.45), inset 0 0 25px rgba(203,162,90,0.18); border-color: rgba(203,162,90,0.7); }
@@ -284,7 +284,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 </div>
 </section>
 
-<!-- WORK (مشاريعي مع عرض الصور الحقيقية) -->
+<!-- WORK (مشاريعي مع عرض صور المشاريع) -->
 <section id="work" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
 <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
 <div style="display:flex; align-items:baseline; gap:16px;">
@@ -293,7 +293,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 </div>
 <a href="works.html" style="color:var(--accent); text-decoration:none; font-size:15px; font-weight:600; font-family:'Tajawal',sans-serif;"><span data-i18n="work.viewAll">عرض كل الأعمال البرمجية ←</span></a>
 </div>
-<p style="margin:0 0 44px; color:#8a857c; font-size:16px; max-width:520px;"><span data-i18n="work.sectionSub">أبرز التطبيقات ومنصات الويب التي قمت بتطويرها بالصور الحقيقية.</span></p>
+<p style="margin:0 0 44px; color:#8a857c; font-size:16px; max-width:520px;"><span data-i18n="work.sectionSub">أبرز التطبيقات ومنصات الويب التي قمت بتطويرها.</span></p>
 
 <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr)); gap:clamp(20px,2.2vw,30px);">
   
@@ -723,4 +723,40 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
         (hadith.number ? '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.45);letter-spacing:.08em;">حديث رقم ' + escapeHtml(hadith.number) + '</span>' : '') +
         '</div>';
     } else {
-      hadithSec = '<div style="padding:12px 18px;color:#5a565
+      hadithSec = '<div style="padding:12px 18px;color:#5a5650;font-size:12px;text-align:center;font-family:\'IBM Plex Mono\',monospace;">الحديث غير متوفر حاليًا</div>';
+    }
+    wirdBody.innerHTML = quranSec + hadithSec;
+  }
+
+  function fetchWird(){
+    var cached = wirdLoad(wirdCacheKey());
+    if (cached) { renderContent(cached.quran, cached.hadith); return; }
+    renderLoading();
+    var pg = wirdPageNum(), dy = wirdDayOfYear();
+    Promise.all([
+      fetch('https://api.alquran.cloud/v1/page/' + pg + '/quran-uthmani').then(function(r){ return r.json(); }),
+      fetch('https://api.hadith.gading.dev/books/muslim?range=1-300').then(function(r){ return r.json(); }).catch(function(){ return null; })
+    ]).then(function(results){
+      var qr = results[0], hr = results[1];
+      var quran = (qr && qr.data) || null;
+      var hadiths = (hr && hr.data && hr.data.hadiths) ? hr.data.hadiths : [];
+      var hadith = hadiths.length > 0 ? hadiths[dy % hadiths.length] : null;
+      renderContent(quran, hadith);
+      if (quran) wirdSave(wirdCacheKey(), { quran: quran, hadith: hadith });
+    }).catch(function(){ renderError(); });
+  }
+
+  wirdBtn.addEventListener('click', function(){
+    var isOpen = wirdPanel.style.display === 'block';
+    if (isOpen) { wirdPanel.style.display = 'none'; return; }
+    wirdPanel.style.display = 'block';
+    wirdPageLabel.textContent = 'صفحة ' + wirdPageNum() + ' / 604';
+    if (!wirdLoaded) { wirdLoaded = true; fetchWird(); }
+  });
+  wirdCloseBtn.addEventListener('click', function(){
+    wirdPanel.style.display = 'none';
+  });
+})();
+</script>
+</body>
+</html>
