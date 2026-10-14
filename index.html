@@ -29,20 +29,6 @@ html{scroll-behavior:smooth;}
 body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 ::selection{background:#cba35a;color:#100f0d;}
 
-/* الفتحة الخاصة (Intro Splash Screen) */
-#introSplash {
-  position: fixed; inset: 0; z-index: 99999;
-  background: #0a0908; display: flex; align-items: center; justify-content: center;
-  flex-direction: column; transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-.splash-terminal {
-  font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #cba35a;
-  background: #13110e; border: 1px solid rgba(203,162,90,0.4); padding: 24px 32px;
-  border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.9); text-align: center;
-}
-.terminal-cursor { display: inline-block; width: 8px; height: 16px; background: #cba35a; animation: cursorBlink 0.8s infinite; vertical-align: middle; margin-right: 4px; }
-@keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
 /* إطار ذهبي متوهج فاخر */
 @keyframes goldGlow {
   0%, 100% { box-shadow: 0 0 20px rgba(203,162,90,0.18), inset 0 0 15px rgba(203,162,90,0.06); border-color: rgba(203,162,90,0.35); }
@@ -106,31 +92,12 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 </head>
 <body>
 
-<!-- الفتحة الخاصة (Intro Splash Screen) -->
-<div id="introSplash">
-  <div class="splash-terminal">
-    <div style="font-size:12px; color:#8a857c; margin-bottom:8px;">[SYSTEM INITIALIZING]</div>
-    <div><span>Ahmed Shawqi Portfolio v2.6</span><span class="terminal-cursor"></span></div>
-    <div style="margin-top:12px; font-size:11px; color:#cba35a; opacity:0.8;">Loading Full-Stack & Web Architecture...</div>
-  </div>
-</div>
-
-<script>
-  setTimeout(function() {
-    var splash = document.getElementById('introSplash');
-    if(splash) {
-      splash.style.opacity = '0';
-      setTimeout(function(){ splash.style.display = 'none'; }, 600);
-    }
-  }, 1200);
-</script>
-
 <div style="--accent:#cba35a; background:#100f0d; color:#f4f1ea; font-family:'Thmanyah Sans','IBM Plex Sans Arabic',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
 
 <!-- NAV -->
 <nav style="position:fixed; top:0; right:0; left:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,72px); background:linear-gradient(180deg,rgba(16,15,13,0.95),rgba(16,15,13,0.8)); backdrop-filter:blur(4px);">
 <a href="#hero" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#f4f1ea;">
-<img src="assets/ahmed-portrait.jpeg" alt="Ahmed Shawqi" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(203,162,90,0.6);">
+<img src="assets/ahmed-portrait.jpeg" alt="Ahmed Shawqi" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(203,162,90,0.6);" onerror="this.style.display='none';">
 <span id="navBrandName" style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;" data-i18n="brand.name">أحمد شوقي</span>
 </a>
 <div style="display:flex; align-items:center; gap:clamp(8px,1.8vw,26px);">
@@ -213,7 +180,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 <!-- AESTHETIC PORTRAIT GLOW -->
 <div style="position:relative; z-index:4; display:flex; align-items:center; justify-content:center; height:100%;">
 <div class="aesthetic-glow" style="position:relative; width:100%; max-width:300px; height:340px; margin:0 auto; overflow:hidden; background:#13110e;">
-<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:grayscale(10%) contrast(1.08);">
+<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:grayscale(10%) contrast(1.08);" onerror="this.src='https://placehold.co/400x500/151210/cba35a?text=Ahmed';">
 <div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,rgba(16,15,13,0.85));"></div>
 <div style="position:absolute; bottom:14px; right:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#cba35a; letter-spacing:.14em;">FULL-STACK DEVELOPER</div>
 </div>
@@ -243,7 +210,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 </div>
 </div>
 <div class="aesthetic-glow" style="position:relative; aspect-ratio:3/4; overflow:hidden; background:#1a1815;">
-<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block;">
+<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block;" onerror="this.src='https://placehold.co/400x500/151210/cba35a?text=Ahmed';">
 <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,rgba(10,10,9,0.65));"></div>
 <div style="position:absolute; bottom:18px; right:18px; left:18px;">
 <div id="aboutCardName" style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:17px; color:#f4f1ea;" data-i18n="about.cardName">أحمد شوقي</div>
@@ -284,7 +251,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 </div>
 </section>
 
-<!-- WORK (مشاريعي مع عرض صور المشاريع) -->
+<!-- WORK (مشاريعي مع عرض الصور بمرونة تامة) -->
 <section id="work" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
 <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
 <div style="display:flex; align-items:baseline; gap:16px;">
@@ -300,7 +267,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
   <!-- المشروع 1: منصة ليالي -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/layali-main.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/layali.jpg';">
+      <img src="assets/layali.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/600x340/151210/cba35a?text=Layali';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Laravel</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -313,7 +280,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
   <!-- المشروع 2: موقع شركة بصمة -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/basmah-main.jpg" alt="شركة بصمة الرقمية" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/basmah-cover';">
+      <img src="assets/basmah-cover" alt="شركة بصمة الرقمية" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/600x340/151210/cba35a?text=Basmah';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Agency Website</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -326,7 +293,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
   <!-- المشروع 3: منصة بنيان -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/bunyan-main.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/bunyan.jpg';">
+      <img src="assets/bunyan.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/600x340/151210/cba35a?text=Bunyan';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Web App</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -339,7 +306,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
   <!-- المشروع 4: جمعية البر -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/albir-main.jpg" alt="جمعية البر" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/albir.jpg';">
+      <img src="assets/albir.jpg" alt="جمعية البر" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/600x340/151210/cba35a?text=Albir';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Non-Profit</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -352,7 +319,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
   <!-- المشروع 5: موقع العيادة -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/clinic-main.jpg" alt="موقع العيادة" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/clinic.jpg';">
+      <img src="assets/clinic.jpg" alt="موقع العيادة" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/600x340/151210/cba35a?text=Clinic';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Medical</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -473,7 +440,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
 <footer style="position:relative; z-index:2; background:#0a0a09; border-top:1px solid rgba(203,162,90,0.22);">
 <div style="padding:clamp(26px,4vh,42px) clamp(20px,5vw,72px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px;">
 <div style="display:flex; align-items:center; gap:12px;">
-<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:36px; height:36px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.6);">
+<img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:36px; height:36px; border-radius:50%; object-fit:cover; border:1px solid rgba(203,162,90,0.6);" onerror="this.style.display='none';">
 <div>
 <div style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:15px; color:#f4f1ea;" data-i18n="brand.name">أحمد شوقي</div>
 <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(203,162,90,0.5); letter-spacing:.14em; margin-top:3px;">FULL-STACK DEVELOPER</div>
@@ -575,7 +542,7 @@ body{margin:0;background:#100f0d;-webkit-font-smoothing:antialiased;}
       "work.details":"Ver detalles e imágenes",
       "experience.title":"Mi Trayectoria",
       "exp1.title":"Gestión de Proyectos en Basma Agency",
-      "exp1.desc":"Dirección de proyectos de software y desarrollo de soluciones web avanzadas.",
+      "exp1.desc":"Dirección de proyectos de software و desarrollo de soluciones web avanzadas.",
       "exp2.title":"Desarrollo Web con Laravel",
       "exp2.desc":"Creación de plataformas y aplicaciones web utilizando Laravel.",
       "rating.tag":"★ — Calificación", "rating.title":"Califica tu experiencia",
