@@ -17,9 +17,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Amiri+Quran&display=swap" rel="stylesheet">
 <style>
-  /* خلفية جمالية جديدة متدرجة */
+/* خلفية جمالية جديدة متدرجة */
 body {
   background: radial-gradient(circle at 50% 0%, #1c1814 0%, #0d0c0a 50%, #050403 100%) !important;
+  margin:0; 
+  color:#f4f1ea; 
+  -webkit-font-smoothing:antialiased;
 }
 
 /* الفتحة الجمالية الآمنة (لا تسبب تعليق) */
@@ -32,7 +35,7 @@ body {
 
 /* تأثير الهوفر لزر تواصل معي */
 .btn-contact {
-  transition: all 0.3s ease;
+  padding:8px 16px; border:1px solid rgba(203,162,90,0.45); border-radius:4px; color:#cba35a; text-decoration:none; font-size:14px; font-weight:600; transition:all 0.3s ease;
 }
 .btn-contact:hover { 
   background: #cba35a !important; 
@@ -41,6 +44,7 @@ body {
   transform: translateY(-2px) !important; 
   border-color: #cba35a !important; 
 }
+
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
@@ -50,18 +54,7 @@ body {
 @font-face { font-family:'Thmanyah Display'; src:url('assets/fonts/thmanyahserifdisplay-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 @font-face { font-family:'Thmanyah Display'; src:url('assets/fonts/thmanyahserifdisplay-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
 html{scroll-behavior:smooth;}
-body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 50%, #050505 100%); color:#f4f1ea; -webkit-font-smoothing:antialiased;}
 ::selection{background:#cba35a;color:#100f0d;}
-
-/* الفتحة الجمالية الآمنة (CSS Only - لا تعلق أبداً) */
-#safeSplash { position: fixed; inset: 0; z-index: 999999; background: #0a0908; display: flex; align-items: center; justify-content: center; flex-direction: column; animation: splashFade 1.2s cubic-bezier(0.8, 0, 0.2, 1) forwards; animation-delay: 0.8s; pointer-events: none; }
-@keyframes splashFade { to { opacity: 0; visibility: hidden; transform: scale(1.05); } }
-.splash-logo { font-size: 28px; color: #cba35a; font-weight: 900; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: pulseGlow 0.8s infinite alternate; }
-@keyframes pulseGlow { from { text-shadow: 0 0 10px rgba(203,162,90,0.2); } to { text-shadow: 0 0 25px rgba(203,162,90,0.6); } }
-
-/* تأثير زر تواصل معي */
-.btn-contact { padding:8px 16px; border:1px solid rgba(203,162,90,0.45); border-radius:4px; color:#cba35a; text-decoration:none; font-size:14px; font-weight:600; transition:all 0.3s ease; }
-.btn-contact:hover { background:#cba35a; color:#100f0d; box-shadow:0 0 15px rgba(203,162,90,0.4); transform:translateY(-2px); }
 
 @keyframes goldGlow {
   0%, 100% { box-shadow: 0 0 20px rgba(203,162,90,0.18), inset 0 0 15px rgba(203,162,90,0.06); border-color: rgba(203,162,90,0.35); }
@@ -81,12 +74,13 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 .work-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease !important; background:rgba(21,18,16,0.8); backdrop-filter:blur(8px); border:1px solid rgba(203,162,90,0.22); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none;}
 .work-card:hover{transform:translateY(-6px) !important;border-color:rgba(203,162,90,.7) !important;box-shadow:0 0 0 1px rgba(203,162,90,.5),0 20px 50px rgba(0,0,0,.7) !important;}
 
-.cf-field{margin-bottom:18px;}
+@keyframes cfFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.cf-field{margin-bottom:18px;animation:cfFadeUp .5s ease both;}
 .cf-field label{display:block;color:#e8caa0;font-size:.85rem;margin-bottom:6px;}
-.cf-field input,.cf-field select,.cf-field textarea{width:100%;background:#151210;border:1px solid rgba(201,162,77,.35);color:#f2ece1;padding:12px 14px;border-radius:4px;font-family:'Tajawal',sans-serif;font-size:.9rem;box-sizing:border-box;}
+.cf-field input,.cf-field select,.cf-field textarea{width:100%;background:#151210;border:1px solid rgba(201,162,77,.35);color:#f2ece1;padding:12px 14px;border-radius:2px;font-family:'Tajawal',sans-serif;font-size:.9rem;box-sizing:border-box;}
 .cf-field textarea{min-height:120px;resize:vertical;}
 .cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{outline:none;border-color:#c9a24d;box-shadow:0 0 0 3px rgba(201,162,77,.15);}
-.cf-submit{width:100%;background:#c9a24d;border:none;color:#161310;font-weight:700;padding:13px;border-radius:4px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.95rem;}
+.cf-submit{width:100%;background:#c9a24d;border:none;color:#161310;font-weight:700;padding:13px;border-radius:2px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.95rem;}
 .cf-submit:hover{opacity:.92;box-shadow:0 0 16px rgba(201,162,77,.35);}
 .cf-status{text-align:center;margin-top:14px;font-size:.85rem;display:none;}
 .cf-status.success{color:#3fae6a;display:block;}
@@ -120,16 +114,8 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
     <span style="font-family:'Tajawal', sans-serif;">أحمد شوقي</span>
   </div>
 </div>
-<!-- الفتحة الجمالية الآمنة -->
-<div id="safeSplash">
-  <div class="splash-logo">
-    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    <span>أحمد شوقي</span>
-    <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8a857c; letter-spacing:0.1em; font-weight:400;">LOADING PORTFOLIO...</span>
-  </div>
-</div>
 
-<div style="--accent:#cba35a; font-family:'Thmanyah Sans','IBM Plex Sans Arabic',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
+<div style="--accent:#cba35a; background:transparent; color:#f4f1ea; font-family:'Thmanyah Sans','IBM Plex Sans Arabic',sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
 
 <!-- NAV -->
 <nav style="position:fixed; top:0; right:0; left:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,72px); background:linear-gradient(180deg,rgba(16,15,13,0.95),rgba(16,15,13,0.4)); backdrop-filter:blur(8px);">
@@ -147,10 +133,14 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 <!-- زر اللغة شكل كرة أرضية -->
 <div id="langSwitcher" style="position:relative; font-family:'IBM Plex Mono',monospace; font-size:11px; z-index:1000; display:inline-block;">
   <button id="langTrigger" type="button" aria-haspopup="true" aria-expanded="false" style="display:flex; align-items:center; gap:6px; background:rgba(203,162,90,0.05); border:1px solid rgba(203,162,90,.4); color:#cba35a; padding:6px 10px; border-radius:4px; cursor:pointer; font-family:inherit; font-size:inherit; transition:0.3s;">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
-    <span id="langTriggerLabel" style="font-weight:600; font-size:13px;">AR</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+    <span id="langTriggerLabel" style="font-weight:600;">AR</span>
   </button>
-  <!-- ضع قائمة اللغات (langMenu) الأصلية الخاصة بك هنا كما هي -->
+  <div id="langMenu" style="display:none; position:absolute; top:calc(100% + 8px); left:0; background:#13110e; border:1px solid rgba(203,162,90,.3); border-radius:4px; overflow:hidden; min-width:75px; box-shadow:0 12px 32px rgba(0,0,0,.8); z-index:1001;">
+  <button class="lang-option" data-lang="ar" style="display:block; width:100%; text-align:center; background:none; border:none; color:#cba35a; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">AR</button>
+  <button class="lang-option" data-lang="en" style="display:block; width:100%; text-align:center; background:none; border:none; border-top:1px solid rgba(255,255,255,.08); color:#8a857c; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">EN</button>
+  <button class="lang-option" data-lang="es" style="display:block; width:100%; text-align:center; background:none; border:none; border-top:1px solid rgba(255,255,255,.08); color:#8a857c; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">ES</button>
+  </div>
 </div>
 <!-- رقم الواتساب في الهيدر -->
 <a href="works.html" class="nav-link hide-mobile" style="color:#b8b2a8; font-weight:500; text-decoration:none; font-size:14px;"><span data-i18n="nav.works">الأعمال البرمجية</span></a>
@@ -165,7 +155,7 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </a>
 
 <!-- MOBILE TAB BAR -->
-<nav class="mobile-tabbar" style="display:none; position:fixed; bottom:0; right:0; left:0; z-index:70; background:rgba(16,15,13,0.97); backdrop-filter:blur(10px); border-top:1px solid rgba(203,162,90,0.25); padding:6px 4px calc(6px + env(safe-area-inset-bottom));">
+<nav class="mobile-tabbar" style="display:none; position:fixed; bottom:0; right:0; left:0; z-index:70; background:rgba(10,9,8,0.97); backdrop-filter:blur(10px); border-top:1px solid rgba(203,162,90,0.25); padding:6px 4px calc(6px + env(safe-area-inset-bottom));">
 <a href="#hero" class="tab-item" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; text-decoration:none; color:#a89c8a; padding:6px 2px;">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
 <span style="font-family:'IBM Plex Mono',monospace; font-size:10px;">الرئيسية</span>
@@ -185,16 +175,16 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </nav>
 
 <!-- WIRD BADGE -->
-<button id="wirdBtn" aria-label="الورد اليومي" style="position:fixed; bottom:24px; left:24px; z-index:9999; width:50px; height:50px; border-radius:50%; background:#0c0b09; border:1.5px solid #cba35a; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 22px rgba(0,0,0,0.65); transition:transform .22s,box-shadow .22s; animation:wirdPulse 3s ease-in-out infinite;">
+<button id="wirdBtn" class="wird-btn" aria-label="الورد اليومي" style="position:fixed; bottom:24px; left:24px; z-index:9999; width:50px; height:50px; border-radius:50%; background:#0a0908; border:2px solid #cba35a; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 22px rgba(0,0,0,0.65); transition:transform .22s,box-shadow .22s; animation:wirdPulse 3s ease-in-out infinite;">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#cba35a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
 </button>
-<div id="wirdPanel" dir="rtl" lang="ar" style="display:none; position:fixed; bottom:82px; left:24px; z-index:9998; width:clamp(300px,88vw,356px); max-height:74vh; overflow-y:auto; background:#0e0d0b; border:1px solid rgba(203,162,90,0.38); border-radius:6px; box-shadow:0 10px 48px rgba(0,0,0,0.75); animation:wirdIn .25s ease; scrollbar-width:thin; scrollbar-color:rgba(203,162,90,0.3) transparent;">
-<div style="position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; padding:13px 16px; background:#0e0d0b; border-bottom:1px solid rgba(203,162,90,0.18); z-index:1;">
+<div id="wirdPanel" dir="rtl" lang="ar" style="display:none; position:fixed; bottom:82px; left:24px; z-index:9998; width:clamp(300px,88vw,356px); max-height:74vh; overflow-y:auto; background:#100f0d; border:1px solid rgba(203,162,90,0.4); border-radius:6px; box-shadow:0 15px 50px rgba(0,0,0,0.9); animation:wirdIn .25s ease; scrollbar-width:thin; scrollbar-color:rgba(203,162,90,0.3) transparent;">
+<div style="position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; padding:13px 16px; background:#100f0d; border-bottom:1px solid rgba(203,162,90,0.2); z-index:1;">
 <div style="display:flex; align-items:center; gap:9px;">
 <span style="font-size:14px; font-weight:700; font-family:'Tajawal',sans-serif; color:#f4f1ea;">الورد اليومي</span>
-<span id="wirdPageLabel" style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(203,162,90,0.65); background:rgba(203,162,90,0.08); padding:2px 8px; border-radius:10px; letter-spacing:0.06em;"></span>
+<span id="wirdPageLabel" style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(203,162,90,0.8); background:rgba(203,162,90,0.1); padding:2px 8px; border-radius:10px; letter-spacing:0.06em;"></span>
 </div>
-<button id="wirdCloseBtn" class="wird-close" style="background:transparent; border:none; cursor:pointer; color:#6f6a61; font-size:18px; line-height:1; padding:0 2px; transition:color .2s;">×</button>
+<button id="wirdCloseBtn" class="wird-close" style="background:transparent; border:none; cursor:pointer; color:#f4f1ea; font-size:22px; line-height:1; padding:0 2px; transition:color .2s;">×</button>
 </div>
 <div id="wirdBody"></div>
 </div>
@@ -212,8 +202,8 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 <h1 id="heroName" style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; line-height:.98; font-size:clamp(48px,7.5vw,120px); letter-spacing:-0.03em; background:linear-gradient(120deg,#e8d49a 0%,#cba35a 28%,#f0dc9a 52%,#cba35a 76%,#e8d49a 100%); background-size:300% 300%; background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; animation:gradientFlow 8s ease infinite;" data-i18n="hero.name">أحمد شوقي</h1>
 <p style="margin:28px 0 0; max-width:560px; font-size:clamp(18px,2.2vw,28px); line-height:1.5; font-weight:300; color:#e7e2d8;"><span data-i18n="hero.p">مطوّر ويب وتطبيقات متكاملة (Laravel & Frontend) بخبرة <span style="color:var(--accent); font-weight:500;">حقيقية وموثقة</span> — حلول برمجية ومواقع متطورة للشركات والمشاريع.</span></p>
 <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:42px;">
-<a href="works.html" style="display:inline-flex; align-items:center; gap:10px; padding:14px 28px; background:var(--accent); color:#100f0d; text-decoration:none; font-weight:700; font-size:15px; border-radius:4px;"><span data-i18n="hero.cta1">شوف أعمالي البرمجية</span></a>
-<a href="#contact-form" class="btn-contact" style="padding:14px 28px;"><span data-i18n="hero.cta2">احجز استشارة</span></a>
+<a href="works.html" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:var(--accent); color:#100f0d; text-decoration:none; font-weight:700; font-size:15px; border-radius:4px;"><span data-i18n="hero.cta1">شوف أعمالي البرمجية</span></a>
+<a href="#contact-form" class="btn-contact" style="padding:15px 30px;"><span data-i18n="hero.cta2">احجز استشارة</span></a>
 </div>
 </div>
 
@@ -221,7 +211,7 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 <div style="position:relative; z-index:4; display:flex; align-items:center; justify-content:center; height:100%;">
 <div class="aesthetic-glow" style="position:relative; width:100%; max-width:300px; height:340px; margin:0 auto; overflow:hidden; background:#13110e;">
 <img src="assets/ahmed-portrait.jpeg" alt="أحمد شوقي" style="width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:grayscale(10%) contrast(1.08);" onerror="this.style.display='none';">
-<div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,rgba(16,15,13,0.85));"></div>
+<div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,rgba(10,9,8,0.9));"></div>
 <div style="position:absolute; bottom:14px; right:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#cba35a; letter-spacing:.14em;">FULL-STACK DEVELOPER</div>
 </div>
 </div>
@@ -268,22 +258,22 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </div>
 <p style="margin:0 0 50px; color:#8a857c; font-size:16px; max-width:540px;"><span data-i18n="services.subtitle">تطبيقات ومواقع ويب متكاملة مبنية بأحدث التقنيات.</span></p>
 <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:clamp(14px,1.8vw,22px);">
-<div class="svc-card">
+<div class="svc-card" style="padding:28px 24px;">
 <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">01</span>
 <h3 style="margin:12px 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc1.title">تطوير تطبيقات الويب (Laravel)</span></h3>
 <p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc1.desc">بناء أنظمة ومواقع متكاملة وقوية لإدارة الأعمال باستخدام إطار عمل لارافيل.</span></p>
 </div>
-<div class="svc-card">
+<div class="svc-card" style="padding:28px 24px;">
 <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">02</span>
 <h3 style="margin:12px 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc2.title">تطوير الواجهات (Frontend)</span></h3>
 <p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc2.desc">واجهات مستخدم عصرية، سريعة، ومتجاوبة تماماً مع مختلف الشاشات والأجهزة.</span></p>
 </div>
-<div class="svc-card">
+<div class="svc-card" style="padding:28px 24px;">
 <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">03</span>
 <h3 style="margin:12px 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc3.title">حلول الشركات والمواقع التعريفية</span></h3>
 <p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc3.desc">مواقع احترافية للشركات، المنظمات، والعيادات مع أنظمة الحجوزات وإدارة المحتوى.</span></p>
 </div>
-<div class="svc-card">
+<div class="svc-card" style="padding:28px 24px;">
 <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:.14em; opacity:.7;">04</span>
 <h3 style="margin:12px 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="svc4.title">تحسين محركات البحث (SEO) والأداء</span></h3>
 <p style="margin:0; font-size:14px; line-height:1.7; color:#9a948a; font-weight:300;"><span data-i18n="svc4.desc">تحسين سرعة تحميل المواقع وضهورها في نتائج البحث الأولى.</span></p>
@@ -291,56 +281,52 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </div>
 </section>
 
-<!-- WORK (مشاريعي مع عرض صور المشاريع) -->
+<!-- WORK (مشاريعي مع عرض الصور الحقيقية في الرئيسية) -->
 <section id="work" style="position:relative; z-index:2; padding:clamp(72px,11vh,130px) clamp(20px,5vw,72px); border-top:1px solid rgba(255,255,255,0.06);">
 <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; padding-bottom:20px; border-bottom:1px solid rgba(203,162,90,0.18);">
 <div style="display:flex; align-items:baseline; gap:16px;">
 <span style="font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:14px;">03</span>
 <h2 style="margin:0; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.02em;"><span data-i18n="work.sectionTitle">مشاريعي البرمجية</span></h2>
 </div>
-<a href="works.html" style="color:var(--accent); text-decoration:none; font-size:15px; font-weight:600; font-family:'Tajawal',sans-serif;"><span data-i18n="work.viewAll">عرض كل الأعمال البرمجية ←</span></a>
+<a href="works.html" class="btn-contact" style="border:none; padding:0;"><span data-i18n="work.viewAll">عرض كل الأعمال البرمجية ←</span></a>
 </div>
 <p style="margin:0 0 44px; color:#8a857c; font-size:16px; max-width:520px;"><span data-i18n="work.sectionSub">أبرز التطبيقات ومنصات الويب التي قمت بتطويرها.</span></p>
 
 <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr)); gap:clamp(20px,2.2vw,30px);">
   
-  <!-- 1. منصة ليالي -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <!-- إزالة الصورة البديلة لحل مشكلة ظهور النص الإنجليزي -->
-      <<img src="assets/layali-main.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/layali.jpg';">
-      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Laravel</span>
+      <img src="assets/layali-main.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='assets/layali.jpg';">
+      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Laravel</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
       <h3 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="work1.title">منصة ليالي</span></h3>
       <p style="margin:0 0 20px; font-size:14.5px; line-height:1.65; color:#9a948a; flex:1;"><span data-i18n="work1.desc">تطبيق ويب متكامل لإدارة الأعمال والعمليات باستخدام إطار عمل Laravel.</span></p>
-      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> <span style="font-family:'IBM Plex Mono',monospace;">←</span></span>
+      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> ←</span>
     </div>
   </a>
 
-  <!-- 2. موقع شركة بصمة -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/basmah.jpg" alt="شركة بصمة الرقمية" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' style=\'background:%23151210\'></svg>';">
-      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Agency</span>
+      <img src="assets/basmah-main.jpg" alt="شركة بصمة الرقمية" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='assets/basmah.jpg';">
+      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Agency Website</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
       <h3 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="work2.title">موقع شركة بصمة الرقمية</span></h3>
       <p style="margin:0 0 20px; font-size:14.5px; line-height:1.65; color:#9a948a; flex:1;"><span data-i18n="work2.desc">المنصة الرسمية لوكالة بصمة للحلول الرقمية وإدارة الهويات البصرية.</span></p>
-      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> <span style="font-family:'IBM Plex Mono',monospace;">←</span></span>
+      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> ←</span>
     </div>
   </a>
 
-  <!-- 3. منصة بنيان -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-     <img src="assets/bunyan-main.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/bunyan.jpg';">
-      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Web App</span>
+      <img src="assets/bunyan-main.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='assets/bunyan.jpg';">
+      <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:2px; font-family:'IBM Plex Mono',monospace;">Web App</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
       <h3 style="margin:0 0 10px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:20px; color:#f4f1ea;"><span data-i18n="work3.title">منصة بنيان</span></h3>
       <p style="margin:0 0 20px; font-size:14.5px; line-height:1.65; color:#9a948a; flex:1;"><span data-i18n="work3.desc">موقع تعريفي وإداري متكامل للحلول الهندسية وتطوير الأعمال.</span></p>
-      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> <span style="font-family:'IBM Plex Mono',monospace;">←</span></span>
+      <span style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); font-size:14px; font-weight:600;"><span data-i18n="work.details">استعراض التفاصيل والصور</span> ←</span>
     </div>
   </a>
 
@@ -395,12 +381,12 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 <h2 style="margin:16px 0 20px; font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:900; font-size:clamp(34px,5.5vw,68px); line-height:1.05; letter-spacing:-0.02em;"><span data-i18n="contact.title1">لنشتغل</span><br><span style="color:var(--accent);"><span data-i18n="contact.title2">سوا</span></span></h2>
 <p style="margin:0 0 40px; font-size:clamp(16px,1.9vw,20px); line-height:1.7; color:#b8b2a8; max-width:580px; font-weight:300;"><span data-i18n="contact.subtitle">عندك مشروع برمجي أو فكرة تطبيق؟ احكيلي عنه.</span></p>
 <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:56px;">
-<a href="mailto:basmadigital.ps@gmail.com" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:var(--accent); color:#100f0d; text-decoration:none; font-weight:700; font-size:15px; border-radius:4px;"><span data-i18n="contact.email">راسلني إيميل</span></a>
-<a href="https://wa.me/970592608998" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:#1fa84a; color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:4px;">
+<a href="mailto:basmadigital.ps@gmail.com" class="btn-contact" style="padding:15px 30px;"><span data-i18n="contact.email">راسلني إيميل</span></a>
+<a href="https://wa.me/970592608998" target="_blank" rel="noopener" class="btn-contact" style="padding:15px 30px;">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.5l5.83-1.447A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.36-.214-3.713.922.952-3.617-.234-.372A9.784 9.784 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
 <span data-i18n="contact.whatsapp">واتساب</span>
 </a>
-<a href="https://www.linkedin.com/in/ahmed-shawqi-basma/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; padding:15px 30px; background:#0a66c2; color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:4px;">
+<a href="https://www.linkedin.com/in/ahmed-shawqi-basma/" target="_blank" rel="noopener" class="btn-contact" style="padding:15px 30px;">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.598 0 4.268 2.368 4.268 5.452v6.289zM5.337 7.433a2.062 2.062 0 11.001-4.124 2.062 2.062 0 010 4.124zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
 <span data-i18n="contact.linkedin">لينكدإن</span>
 </a>
@@ -472,30 +458,25 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </footer>
 
 </div>
+
+<!-- SCRIPT: LANGUAGES (كامل كما كان) -->
 <script>
 (function(){
   var translations = {
     en: {
-      "brand.name":"Ahmed Shawqi",
-      "nav.works":"My Works", "nav.work":"Projects", "nav.services":"Services", "nav.contact":"Contact Me",
-      "hero.badge":"I build web applications that work right",
-      "hero.name":"Ahmed Shawqi",
+      "brand.name":"Ahmed Shawqi", "nav.works":"My Works", "nav.work":"Projects", "nav.services":"Services", "nav.contact":"Contact Me",
+      "hero.badge":"I build web applications that work right", "hero.name":"Ahmed Shawqi",
       "hero.p":"A web and full-stack developer with documented experience — building custom web apps, enterprise solutions, and interactive platforms.",
       "hero.cta1":"See My Works", "hero.cta2":"Book a Consultation",
-      "about.title":"Who is Ahmed Shawqi?",
-      "about.cardName":"Ahmed Shawqi",
+      "about.title":"Who is Ahmed Shawqi?", "about.cardName":"Ahmed Shawqi",
       "about.p1":"A web developer and app programmer from Gaza, building software and web applications from idea to launch.",
       "about.p2":"Managing Basma Digital Agency and crafting web solutions for businesses and startups with clean code and seamless user experience.",
       "about.quote":"Code must run efficiently, and design must serve the technical and business purpose.",
       "services.title":"My Services", "services.subtitle":"Web applications and platforms built with modern technologies.",
-      "svc1.title":"Web App Development (Laravel)",
-      "svc1.desc":"Building robust management systems and web platforms using the Laravel framework.",
-      "svc2.title":"Frontend Development",
-      "svc2.desc":"Modern, fast, and fully responsive user interfaces across all devices.",
-      "svc3.title":"Business Solutions",
-      "svc3.desc":"Professional websites for companies, organizations, and clinics with booking systems.",
-      "svc4.title":"SEO & Performance",
-      "svc4.desc":"Optimizing site loading speed and search engine rankings.",
+      "svc1.title":"Web App Development (Laravel)", "svc1.desc":"Building robust management systems and web platforms using the Laravel framework.",
+      "svc2.title":"Frontend Development", "svc2.desc":"Modern, fast, and fully responsive user interfaces across all devices.",
+      "svc3.title":"Business Solutions", "svc3.desc":"Professional websites for companies, organizations, and clinics with booking systems.",
+      "svc4.title":"SEO & Performance", "svc4.desc":"Optimizing site loading speed and search engine rankings.",
       "work.sectionTitle":"My Projects", "work.viewAll":"View All Works →", "work.sectionSub":"Prominent applications and web platforms I have developed.",
       "work1.title":"Layali Platform", "work1.desc":"An integrated web application for business and operations management using Laravel.",
       "work2.title":"Basma Digital Agency", "work2.desc":"The official digital platform for Basma Agency and branding solutions.",
@@ -504,12 +485,9 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
       "work5.title":"Medical Clinic", "work5.desc":"An electronic system for booking medical appointments and managing records.",
       "work.details":"View details & images",
       "experience.title":"My Journey",
-      "exp1.title":"Managing & Developing Basma Agency Projects",
-      "exp1.desc":"Directing software projects and developing advanced web solutions for clients.",
-      "exp2.title":"Laravel & Web Development",
-      "exp2.desc":"Building web platforms and applications using Laravel and modern frontends.",
-      "rating.tag":"★ — Rating", "rating.title":"Rate Your Experience",
-      "rating.subtitle":"Your feedback helps me improve", "rating.of5":"out of 5",
+      "exp1.title":"Managing & Developing Basma Agency Projects", "exp1.desc":"Directing software projects and developing advanced web solutions for clients.",
+      "exp2.title":"Laravel & Web Development", "exp2.desc":"Building web platforms and applications using Laravel and modern frontends.",
+      "rating.tag":"★ — Rating", "rating.title":"Rate Your Experience", "rating.subtitle":"Your feedback helps me improve", "rating.of5":"out of 5",
       "rating.thanks":"Thanks for your rating! ⭐", "rating.error":"Couldn't submit your rating, try again later.",
       "contact.tag":"05 — Contact", "contact.title1":"Let's Work", "contact.title2":"Together",
       "contact.subtitle":"Have a software project or app idea? Tell me about it.",
@@ -518,32 +496,24 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
       "form.service":"Service Type", "form.service.select":"Select a service",
       "form.service.opt1":"Laravel web app", "form.service.opt2":"Frontend development",
       "form.service.opt3":"Company website", "form.service.opt4":"SEO & Performance",
-      "form.service.opt5":"Other", "form.message":"Message",
-      "form.message.ph":"Tell me about your project...", "form.submit":"Send",
+      "form.service.opt5":"Other", "form.message":"Message", "form.message.ph":"Tell me about your project...", "form.submit":"Send",
       "direct.label":"Direct Contact",
-      "footer.about":"About", "footer.services":"Services", "footer.work":"Works",
-      "footer.contact":"Contact", "footer.copyright":"© 2026 Ahmed Shawqi. All rights reserved."
+      "footer.about":"About", "footer.services":"Services", "footer.work":"Works", "footer.contact":"Contact", "footer.copyright":"© 2026 Ahmed Shawqi. All rights reserved."
     },
     es: {
-      "brand.name":"Ahmed Shawqi",
-      "nav.works":"Mis Trabajos", "nav.work":"Proyectos", "nav.services":"Servicios", "nav.contact":"Contáctame",
-      "hero.badge":"Construyo aplicaciones web que funcionan bien",
-      "hero.name":"Ahmed Shawqi",
+      "brand.name":"Ahmed Shawqi", "nav.works":"Mis Trabajos", "nav.work":"Proyectos", "nav.services":"Servicios", "nav.contact":"Contáctame",
+      "hero.badge":"Construyo aplicaciones web que funcionan bien", "hero.name":"Ahmed Shawqi",
       "hero.p":"Desarrollador web y Full-Stack con experiencia — creando aplicaciones web personalizadas y soluciones empresariales.",
       "hero.cta1":"Ver mis trabajos", "hero.cta2":"Reservar consulta",
-      "about.title":"¿Quién es Ahmed Shawqi?",
+      "about.title":"¿Quién es Ahmed Shawqi?", "about.cardName":"Ahmed Shawqi",
       "about.p1":"Desarrollador web y programador de Gaza, creando software y aplicaciones desde la idea hasta el lanzamiento.",
       "about.p2":"Gestionando Basma Digital y diseñando soluciones web con código limpio y excelente experiencia de usuario.",
       "about.quote":"El código debe funcionar eficientemente y el diseño debe cumplir su propósito comercial.",
       "services.title":"Mis Servicios", "services.subtitle":"Aplicaciones y plataformas web construidas con tecnologías modernas.",
-      "svc1.title":"Desarrollo Web (Laravel)",
-      "svc1.desc":"Construcción de sistemas de gestión robustos utilizando el framework Laravel.",
-      "svc2.title":"Desarrollo Frontend",
-      "svc2.desc":"Interfaces de usuario modernas, rápidas y totalmente responsivas.",
-      "svc3.title":"Soluciones Empresariales",
-      "svc3.desc":"Sitios web profesionales para empresas, organizaciones y clínicas.",
-      "svc4.title":"SEO y Rendimiento",
-      "svc4.desc":"Optimización de velocidad de carga y posicionamiento en buscadores.",
+      "svc1.title":"Desarrollo Web (Laravel)", "svc1.desc":"Construcción de sistemas de gestión robustos utilizando el framework Laravel.",
+      "svc2.title":"Desarrollo Frontend", "svc2.desc":"Interfaces de usuario modernas, rápidas y totalmente responsivas.",
+      "svc3.title":"Soluciones Empresariales", "svc3.desc":"Sitios web profesionales para empresas, organizaciones y clínicas.",
+      "svc4.title":"SEO y Rendimiento", "svc4.desc":"Optimización de velocidad de carga y posicionamiento en buscadores.",
       "work.sectionTitle":"Mis Proyectos", "work.viewAll":"Ver todos los trabajos →", "work.sectionSub":"Aplicaciones y plataformas web destacadas que he desarrollado.",
       "work1.title":"Plataforma Layali", "work1.desc":"Una aplicación web integrada para la gestión de negocios utilizando Laravel.",
       "work2.title":"Agencia Basma Digital", "work2.desc":"La plataforma digital oficial de la agencia y soluciones de marca.",
@@ -552,12 +522,9 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
       "work5.title":"Clínica Médica", "work5.desc":"Un sistema electrónico para reservar citas médicas y gestionar registros.",
       "work.details":"Ver detalles e imágenes",
       "experience.title":"Mi Trayectoria",
-      "exp1.title":"Gestión de Proyectos en Basma Agency",
-      "exp1.desc":"Dirección de proyectos de software y desarrollo de soluciones web avanzadas.",
-      "exp2.title":"Desarrollo Web con Laravel",
-      "exp2.desc":"Creación de plataformas y aplicaciones web utilizando Laravel.",
-      "rating.tag":"★ — Calificación", "rating.title":"Califica tu experiencia",
-      "rating.subtitle":"Tu opinión me ayuda a mejorar", "rating.of5":"de 5",
+      "exp1.title":"Gestión de Proyectos en Basma Agency", "exp1.desc":"Dirección de proyectos de software y desarrollo de soluciones web avanzadas.",
+      "exp2.title":"Desarrollo Web con Laravel", "exp2.desc":"Creación de plataformas y aplicaciones web utilizando Laravel.",
+      "rating.tag":"★ — Calificación", "rating.title":"Califica tu experiencia", "rating.subtitle":"Tu opinión me ayuda a mejorar", "rating.of5":"de 5",
       "rating.thanks":"¡Gracias por tu calificación! ⭐", "rating.error":"No se pudo enviar tu calificación.",
       "contact.tag":"05 — Contacto", "contact.title1":"Trabajemos", "contact.title2":"Juntos",
       "contact.subtitle":"¿Tienes un proyecto de software? Cuéntame sobre él.",
@@ -566,11 +533,9 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
       "form.service":"Tipo de servicio", "form.service.select":"Selecciona un servicio",
       "form.service.opt1":"Aplicación web Laravel", "form.service.opt2":"Desarrollo frontend",
       "form.service.opt3":"Sitio web empresarial", "form.service.opt4":"SEO y rendimiento",
-      "form.service.opt5":"Otro", "form.message":"Mensaje",
-      "form.message.ph":"Cuéntame sobre tu proyecto...", "form.submit":"Enviar",
+      "form.service.opt5":"Otro", "form.message":"Mensaje", "form.message.ph":"Cuéntame sobre tu proyecto...", "form.submit":"Enviar",
       "direct.label":"Contacto directo",
-      "footer.about":"Acerca de", "footer.services":"Servicios", "footer.work":"Trabajos",
-      "footer.contact":"Contacto", "footer.copyright":"© 2026 Ahmed Shawqi. Todos los derechos reservados."
+      "footer.about":"Acerca de", "footer.services":"Servicios", "footer.work":"Trabajos", "footer.contact":"Contacto", "footer.copyright":"© 2026 Ahmed Shawqi. Todos los derechos reservados."
     }
   };
 
@@ -611,38 +576,18 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 
   var langTrigger = document.getElementById('langTrigger');
   var langMenu = document.getElementById('langMenu');
-  var langChevron = document.getElementById('langChevron');
-
-  function closeLangMenu(){
-    langMenu.style.display = 'none';
-    langTrigger.setAttribute('aria-expanded','false');
-    if(langChevron) langChevron.style.transform = 'rotate(0deg)';
-  }
-
   langTrigger.addEventListener('click', function(e){
     e.stopPropagation();
-    var isOpen = langMenu.style.display === 'block';
-    if(isOpen){ closeLangMenu(); }
-    else{
-      langMenu.style.display = 'block';
-      langTrigger.setAttribute('aria-expanded','true');
-      if(langChevron) langChevron.style.transform = 'rotate(180deg)';
-    }
+    langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
   });
-
   document.querySelectorAll('.lang-option').forEach(function(btn){
     btn.addEventListener('click', function(){
       setLang(btn.getAttribute('data-lang'));
-      closeLangMenu();
+      langMenu.style.display = 'none';
     });
   });
-
   document.addEventListener('click', function(e){
-    if(!document.getElementById('langSwitcher').contains(e.target)) closeLangMenu();
-  });
-
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeLangMenu();
+    if(!document.getElementById('langSwitcher').contains(e.target)) langMenu.style.display = 'none';
   });
 
   var saved = 'ar';
@@ -650,6 +595,8 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
   setLang(saved);
 })();
 </script>
+
+<!-- SCRIPT: WIRD (الورد اليومي) -->
 <script>
 (function(){
   var wirdBtn = document.getElementById('wirdBtn');
@@ -672,36 +619,20 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
   function wirdCacheKey(){ return 'wird_pg' + wirdPageNum(); }
   function wirdLoad(k){ try{ var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; }catch(e){ return null; } }
   function wirdSave(k,d){ try{ localStorage.setItem(k, JSON.stringify(d)); }catch(e){} }
-
   function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
   function renderLoading(){
-    wirdBody.innerHTML = '<div style="padding:28px;text-align:center;color:#6f6a61;font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:.1em;">جارٍ التحميل...</div>';
+    wirdBody.innerHTML = '<div style="padding:28px;text-align:center;color:#cba35a;font-family:\'IBM Plex Mono\',monospace;font-size:13px;letter-spacing:.1em;">جارٍ جلب الآيات والحديث...</div>';
   }
   function renderError(){
-    wirdBody.innerHTML = '<p style="margin:0;padding:24px;text-align:center;color:#8a857c;font-size:14px;font-family:\'Tajawal\',sans-serif;">تعذّر تحميل الورد اليومي، حاول لاحقًا</p>';
+    wirdBody.innerHTML = '<p style="padding:24px;text-align:center;color:#8a857c;font-size:14px;">تعذّر تحميل الورد، يرجى المحاولة لاحقًا</p>';
   }
   function renderContent(quran, hadith){
     var ayahs = (quran && quran.ayahs) || [];
     var surahName = (ayahs.length > 0 && ayahs[0].surah) ? escapeHtml(ayahs[0].surah.name) : '';
     var ayahText = ayahs.map(function(a){ return a.text; }).join(' ');
-    var quranSec = '<div style="padding:16px 18px;border-bottom:1px solid rgba(203,162,90,0.12);">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-      '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.6);letter-spacing:.1em;">القرآن الكريم</span>' +
-      (surahName ? '<span style="font-family:\'Tajawal\',sans-serif;font-size:11px;color:#5a5650;">' + surahName + '</span>' : '') +
-      '</div>' +
-      '<p style="margin:0;font-family:\'Amiri Quran\',\'Tajawal\',serif;font-size:17px;line-height:2.1;color:#f4f1ea;text-align:right;direction:rtl;">' + escapeHtml(ayahText) + '</p>' +
-      '</div>';
-    var hadithSec;
-    if (hadith) {
-      hadithSec = '<div style="padding:14px 18px 18px;">' +
-        '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.6);letter-spacing:.1em;margin-bottom:10px;">صحيح مسلم</div>' +
-        '<p style="margin:0 0 10px;font-family:\'Tajawal\',sans-serif;font-size:14px;line-height:1.9;color:#e7e2d8;direction:rtl;text-align:right;">' + escapeHtml(hadith.arab || '') + '</p>' +
-        (hadith.number ? '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.45);letter-spacing:.08em;">حديث رقم ' + escapeHtml(hadith.number) + '</span>' : '') +
-        '</div>';
-    } else {
-      hadithSec = '<div style="padding:12px 18px;color:#5a5650;font-size:12px;text-align:center;font-family:\'IBM Plex Mono\',monospace;">الحديث غير متوفر حاليًا</div>';
-    }
+    var quranSec = '<div style="padding:16px 18px;border-bottom:1px solid rgba(203,162,90,0.12);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.6);">القرآن الكريم</span><span style="font-size:11px;color:#cba35a;">' + surahName + '</span></div><p style="margin:0;font-family:\'Amiri Quran\',serif;font-size:17px;line-height:2.1;color:#f4f1ea;text-align:right;">' + escapeHtml(ayahText) + '</p></div>';
+    var hadithSec = hadith ? '<div style="padding:14px 18px 18px;"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(203,162,90,0.6);margin-bottom:10px;">صحيح مسلم</div><p style="margin:0 0 10px;font-size:14px;line-height:1.9;color:#e7e2d8;text-align:right;">' + escapeHtml(hadith.arab || '') + '</p></div>' : '<div style="padding:12px;text-align:center;font-size:12px;color:#5a5650;">الحديث غير متوفر حاليًا</div>';
     wirdBody.innerHTML = quranSec + hadithSec;
   }
 
@@ -724,16 +655,14 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
   }
 
   wirdBtn.addEventListener('click', function(){
-    var isOpen = wirdPanel.style.display === 'block';
-    if (isOpen) { wirdPanel.style.display = 'none'; return; }
+    if(wirdPanel.style.display === 'block'){ wirdPanel.style.display = 'none'; return; }
     wirdPanel.style.display = 'block';
     wirdPageLabel.textContent = 'صفحة ' + wirdPageNum() + ' / 604';
-    if (!wirdLoaded) { wirdLoaded = true; fetchWird(); }
+    if(!wirdLoaded){ wirdLoaded = true; fetchWird(); }
   });
-  wirdCloseBtn.addEventListener('click', function(){
-    wirdPanel.style.display = 'none';
-  });
+  wirdCloseBtn.addEventListener('click', function(){ wirdPanel.style.display = 'none'; });
 })();
 </script>
+
 </body>
 </html>
