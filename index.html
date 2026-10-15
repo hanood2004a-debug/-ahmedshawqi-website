@@ -17,6 +17,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Amiri+Quran&display=swap" rel="stylesheet">
 <style>
+  /* خلفية جمالية جديدة متدرجة */
+body {
+  background: radial-gradient(circle at 50% 0%, #1c1814 0%, #0d0c0a 50%, #050403 100%) !important;
+}
+
+/* الفتحة الجمالية الآمنة (لا تسبب تعليق) */
+#safeSplash { 
+  position: fixed; inset: 0; z-index: 999999; background: #080706; display: flex; align-items: center; justify-content: center; flex-direction: column; animation: splashFade 1.2s cubic-bezier(0.8, 0, 0.2, 1) forwards; animation-delay: 1s; pointer-events: none; 
+}
+@keyframes splashFade { to { opacity: 0; visibility: hidden; transform: scale(1.05); } }
+.splash-logo { font-size: 32px; color: #cba35a; font-weight: 900; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: pulseGlow 0.8s infinite alternate; }
+@keyframes pulseGlow { from { text-shadow: 0 0 10px rgba(203,162,90,0.2); } to { text-shadow: 0 0 25px rgba(203,162,90,0.7); } }
+
+/* تأثير الهوفر لزر تواصل معي */
+.btn-contact {
+  transition: all 0.3s ease;
+}
+.btn-contact:hover { 
+  background: #cba35a !important; 
+  color: #100f0d !important; 
+  box-shadow: 0 0 18px rgba(203,162,90,0.4) !important; 
+  transform: translateY(-2px) !important; 
+  border-color: #cba35a !important; 
+}
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
 @font-face { font-family:'Thmanyah Sans'; src:url('assets/fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
@@ -90,7 +114,12 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 </style>
 </head>
 <body>
-
+<div id="safeSplash">
+  <div class="splash-logo">
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span style="font-family:'Tajawal', sans-serif;">أحمد شوقي</span>
+  </div>
+</div>
 <!-- الفتحة الجمالية الآمنة -->
 <div id="safeSplash">
   <div class="splash-logo">
@@ -109,25 +138,21 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
 <span id="navBrandName" style="font-family:'Thmanyah Display','Tajawal',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;" data-i18n="brand.name">أحمد شوقي</span>
 </a>
 <div style="display:flex; align-items:center; gap:clamp(12px,1.8vw,26px);">
-
 <!-- رقم الواتساب في الهيدر -->
-<a href="https://wa.me/970592608998" target="_blank" rel="noopener" class="hide-mobile" style="display:flex; align-items:center; gap:6px; color:#cba35a; text-decoration:none; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500;">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.5l5.83-1.447A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.36-.214-3.713.922.952-3.617-.234-.372A9.784 9.784 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+<a href="https://wa.me/970592608998" target="_blank" rel="noopener" class="hide-mobile" style="display:inline-flex; align-items:center; gap:6px; color:#cba35a; text-decoration:none; font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500; margin-left: 15px;">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.5l5.83-1.447A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.36-.214-3.713.922.952-3.617-.234-.372A9.784 9.784 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
   <span dir="ltr">+970 59 260 8998</span>
 </a>
 
-<div id="langSwitcher" style="position:relative; font-family:'IBM Plex Mono',monospace; font-size:11px; z-index:1000;">
-<button id="langTrigger" type="button" aria-haspopup="true" aria-expanded="false" style="display:flex; align-items:center; gap:6px; background:#13110e; border:1px solid rgba(203,162,90,.35); color:#cba35a; padding:6px 12px; border-radius:4px; cursor:pointer; font-family:inherit; font-size:inherit; transition:all 0.3s;">
-<!-- أيقونة الكرة الأرضية بدل السهم -->
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
-<span id="langTriggerLabel" style="font-weight:600; font-size:12px;">AR</span>
-</button>
-<div id="langMenu" style="display:none; position:absolute; top:calc(100% + 8px); left:0; background:#13110e; border:1px solid rgba(203,162,90,.4); border-radius:4px; overflow:hidden; min-width:75px; box-shadow:0 12px 32px rgba(0,0,0,.8); z-index:1001;">
-<button class="lang-option" data-lang="ar" style="display:block; width:100%; text-align:center; background:none; border:none; color:#cba35a; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">AR</button>
-<button class="lang-option" data-lang="en" style="display:block; width:100%; text-align:center; background:none; border:none; border-top:1px solid rgba(255,255,255,.08); color:#8a857c; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">EN</button>
-<button class="lang-option" data-lang="es" style="display:block; width:100%; text-align:center; background:none; border:none; border-top:1px solid rgba(255,255,255,.08); color:#8a857c; padding:10px; cursor:pointer; font-family:inherit; font-size:inherit;">ES</button>
+<!-- زر اللغة شكل كرة أرضية -->
+<div id="langSwitcher" style="position:relative; font-family:'IBM Plex Mono',monospace; font-size:11px; z-index:1000; display:inline-block;">
+  <button id="langTrigger" type="button" aria-haspopup="true" aria-expanded="false" style="display:flex; align-items:center; gap:6px; background:rgba(203,162,90,0.05); border:1px solid rgba(203,162,90,.4); color:#cba35a; padding:6px 10px; border-radius:4px; cursor:pointer; font-family:inherit; font-size:inherit; transition:0.3s;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+    <span id="langTriggerLabel" style="font-weight:600; font-size:13px;">AR</span>
+  </button>
+  <!-- ضع قائمة اللغات (langMenu) الأصلية الخاصة بك هنا كما هي -->
 </div>
-</div>
+<!-- رقم الواتساب في الهيدر -->
 <a href="works.html" class="nav-link hide-mobile" style="color:#b8b2a8; font-weight:500; text-decoration:none; font-size:14px;"><span data-i18n="nav.works">الأعمال البرمجية</span></a>
 <a href="#work" class="nav-link hide-mobile" style="color:#b8b2a8; font-weight:500; text-decoration:none; font-size:14px;"><span data-i18n="nav.work">مشاريعي</span></a>
 <a href="#services" class="nav-link hide-mobile" style="color:#b8b2a8; font-weight:500; text-decoration:none; font-size:14px;"><span data-i18n="nav.services">خدماتي</span></a>
@@ -283,7 +308,7 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
       <!-- إزالة الصورة البديلة لحل مشكلة ظهور النص الإنجليزي -->
-      <img src="assets/layali.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' style=\'background:%23151210\'></svg>';">
+      <<img src="assets/layali-main.jpg" alt="منصة ليالي" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/layali.jpg';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Laravel</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -309,7 +334,7 @@ body{margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 
   <!-- 3. منصة بنيان -->
   <a href="works.html" class="work-card">
     <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-      <img src="assets/bunyan.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' style=\'background:%23151210\'></svg>';">
+     <img src="assets/bunyan-main.jpg" alt="منصة بنيان" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/bunyan.jpg';">
       <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,0.85); border:1px solid rgba(203,162,90,0.4); color:var(--accent); font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Web App</span>
     </div>
     <div style="padding:24px; display:flex; flex-direction:column; flex:1;">

@@ -11,6 +11,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* خلفية جمالية جديدة متدرجة */
+body {
+  background: radial-gradient(circle at 50% 0%, #1c1814 0%, #0d0c0a 50%, #050403 100%) !important;
+}
+
+/* الفتحة الجمالية الآمنة (لا تسبب تعليق) */
+#safeSplash { 
+  position: fixed; inset: 0; z-index: 999999; background: #080706; display: flex; align-items: center; justify-content: center; flex-direction: column; animation: splashFade 1.2s cubic-bezier(0.8, 0, 0.2, 1) forwards; animation-delay: 1s; pointer-events: none; 
+}
+@keyframes splashFade { to { opacity: 0; visibility: hidden; transform: scale(1.05); } }
+.splash-logo { font-size: 32px; color: #cba35a; font-weight: 900; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: pulseGlow 0.8s infinite alternate; }
+@keyframes pulseGlow { from { text-shadow: 0 0 10px rgba(203,162,90,0.2); } to { text-shadow: 0 0 25px rgba(203,162,90,0.7); } }
+
+/* تأثير الهوفر لزر تواصل معي */
+.btn-contact {
+  transition: all 0.3s ease;
+}
+.btn-contact:hover { 
+  background: #cba35a !important; 
+  color: #100f0d !important; 
+  box-shadow: 0 0 18px rgba(203,162,90,0.4) !important; 
+  transform: translateY(-2px) !important; 
+  border-color: #cba35a !important; 
+}
   html { scroll-behavior: smooth; }
   body { margin:0; background:radial-gradient(circle at 50% 0%, #1a1714 0%, #100f0d 50%, #050505 100%); color:#f4f1ea; font-family:'Tajawal',sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh; }
   ::selection { background:#cba35a; color:#100f0d; }
@@ -45,7 +69,12 @@
 </style>
 </head>
 <body>
-
+<div id="safeSplash">
+  <div class="splash-logo">
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span style="font-family:'Tajawal', sans-serif;">أحمد شوقي</span>
+  </div>
+</div>
 <!-- الفتحة الجمالية الآمنة -->
 <div id="safeSplash">
   <div class="splash-logo">
@@ -139,7 +168,7 @@
     <!-- 4. جمعية البر -->
     <div class="work-card" onclick="openModal('موقع جمعية البر الرقمي', ['assets/albir.jpg'], 'المنصة الرقمية الخيرية لتسهيل الوصول للمبادرات والحملات الإغاثية.', ['HTML/CSS', 'JS', 'UI Design'], '#')">
       <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/albir.jpg" alt="جمعية البر" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' style=\'background:%23151210\'></svg>';">
+        <img src="assets/albir-main.jpg" alt="جمعية البر" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/albir.jpg';">
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Non-Profit</span>
       </div>
       <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
@@ -152,7 +181,7 @@
     <!-- 5. موقع العيادة -->
     <div class="work-card" onclick="openModal('موقع العيادة الطبية', ['assets/clinic.jpg'], 'نظام إلكتروني مخصص لحجز المواعيد وإدارة سجلات المراجعين.', ['Booking', 'Database', 'Frontend'], '#')">
       <div style="position:relative; aspect-ratio:16/9; background:#0a0a09; overflow:hidden;">
-        <img src="assets/clinic.jpg" alt="موقع العيادة" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' style=\'background:%23151210\'></svg>';">
+        <img src="assets/clinic-main.jpg" alt="موقع العيادة الطبية" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/clinic.jpg';">
         <span style="position:absolute; top:12px; right:12px; padding:5px 11px; background:rgba(10,10,9,.9); border:1px solid rgba(203,162,90,.4); color:#cba35a; font-size:11px; font-weight:600; border-radius:4px; font-family:'IBM Plex Mono',monospace;">Medical</span>
       </div>
       <div style="padding:24px; display:flex; flex-direction:column; flex:1;">
